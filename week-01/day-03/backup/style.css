@@ -1,0 +1,25 @@
+div {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  background: rgb(11, 235, 222);
+  width: 140px;
+  height: 140px;
+  text-align: center;
+  line-height: 140px;
+  vertical-align: middle;
+  
+  border-radius: 70px;
+  margin: 5px;
+
+}
+
+div:first-child {
+background: rgb(185, 12, 235);
+}
+
+div:last-child {
+  background: rgb(235, 190, 12);
+  }

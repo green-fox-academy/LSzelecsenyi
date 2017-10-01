@@ -1,0 +1,118 @@
+form {
+  box-sizing: border-box;
+  margin: auto;
+  width: 820px;
+  height: 1000px;
+  background: #8BBC8B;
+  padding-top: 20px;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+.top {
+  float: top;
+  background: crimson;
+  width: 95%;
+  height: 4%;
+  padding: 2.5%;
+  margin-bottom: 1.2%;
+  text-align: left;
+  font-size: 150%;
+  }
+
+
+  
+/*   form:nth-child(2), form:nth-child(3) {
+    display: inline-block;
+    width: 410px;
+    height: 39%;
+    padding: 2.5%;
+    margin: 0.02% 0% 0.014% 0%; */
+  
+  .left {
+    background: #4C5593;
+    float: left;
+    width: 45%;
+    height: 39%;
+    padding: 2.5%;
+    margin: 0.02% 0% 0.014% 0%;
+  }
+  
+  .right {
+    background: #D88618;
+    float: right;
+    width: 45%;
+    height: 39%;
+    padding: 2.5%;
+    margin: 0.02% 0% 0.014% 0%;
+  }
+
+.bottom {
+  background: #8A3A4A;
+  width: 95%;
+  height: 39%;
+  padding: 2.5%;
+  margin-bottom: 0.012%;
+  position: absolute;
+  bottom: 2%;
+}
+
+.left > section:nth-child(2), .left > section:nth-child(3){
+  position: relative;
+  height: 10%;
+  width: 50%;
+  margin: 0;
+  padding: 0%;
+  background: yellowgreen;
+  text-align: center;
+  top: 30%;
+}
+
+/* név */
+.left > section:nth-child(1) {
+  position: relative;
+  height: 10%;
+  width: 100%;
+  margin: 0;
+  padding: 0%;
+  background: yellowgreen;
+  text-align: left;
+  top: 80%;
+}
+
+/* születési év */
+.left > section:nth-child(2) {
+  float: right;
+}
+
+.left > section:nth-child(3) {
+  float: right;
+}
+
+.left > section:nth-child(4) {
+  position: relative;
+  display: inline-block;
+  float: right;
+  height: 50%;
+  width: 100%;
+  margin: 0;
+  background: #9A9F8E;
+  text-align: center;
+  top: 40%;
+}
+
+h1 {
+
+}
+/* Születési év */
+
+[type="date"] {
+  background:#fff;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}

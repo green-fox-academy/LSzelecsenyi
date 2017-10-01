@@ -1,0 +1,17 @@
+* {
+  paddin: 0;
+  margin: 0;
+}
+
+
+p {
+  font-size: 36px;
+  color: rgb(240, 170, 40);
+  font-weight: bold;
+  margin: 0;
+}
+
+xmp {
+  font-size: 20px;
+  margin: 0;
+}
