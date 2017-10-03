@@ -1,7 +1,8 @@
 public class Hero extends Character {
 
     public Hero() {
-        maxHP = maxHP + super.d6.dice() + super.d6.dice() + super.d6.dice();
+        maxHP = maxHP + d6.dice() + d6.dice() + d6.dice();
+
 
     }
 }

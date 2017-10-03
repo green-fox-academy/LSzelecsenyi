@@ -5,11 +5,11 @@
 //        if its the hero, it is the end of the game
 
 public class Character {
-int maxHP;
-int currentHP;
-int defend;
-int strike;
-Dice d6 = new Dice();
+    int maxHP;
+    int currentHP;
+    int defend;
+    int strike;
+    Dice d6 = new Dice();
 
 public Character() {
     this.maxHP = maxHP;
@@ -17,5 +17,4 @@ public Character() {
     this.strike = strike;
     this.currentHP = maxHP;
 }
-
 }
