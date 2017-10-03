@@ -19,8 +19,7 @@ public class Board extends JComponent implements KeyListener {
 
     @Override
     public void paint(Graphics graphics) {
-        int[][] table = new int[10][10];
-        int[][] multi = new int[][]{
+        int[][] table = new int[][]{
                 {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
                 {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
@@ -34,17 +33,15 @@ public class Board extends JComponent implements KeyListener {
         };
 
         super.paint(graphics);
-        graphics.fillRect(testBoxX, testBoxY, 72, 72);
-        // here you have a 720x720 canvas
-        // you can create and draw an image using the class below e.g.
-        for (int column = 0, yPos = 0; column < 10; column++, yPos += 72) {
-            for (int row = 0, xPos = 0; row < 10; row++, xPos += 72) {
+//        graphics.fillRect(testBoxX, testBoxY, 72, 72);
+        for (int column = 0; column < 10; column++) {
+            for (int row = 0; row < 10; row++) {
+                    PositionedImage floor = new PositionedImage("Assets/floor.png", column * 72, row * 72);
+                    PositionedImage wall = new PositionedImage("Assets/wall.png", column * 72, row * 72);
                 if (table[column][row] == 0) {
-                    PositionedImage image = new PositionedImage("Assets/floor.png", xPos, yPos);
-                    image.draw(graphics);
+                    floor.draw(graphics);
                 } else if (table[column][row] == 1) {
-                    PositionedImage image = new PositionedImage("Assets/wall.png", xPos, yPos);
-                    image.draw(graphics);
+                    wall.draw(graphics);
                 }
             }
         }
