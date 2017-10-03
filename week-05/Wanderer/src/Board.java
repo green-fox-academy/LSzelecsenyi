@@ -2,9 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Board extends JComponent implements KeyListener {
 
+    String heroImage = "Assets/hero-down.png";
     int[][] table = new int[][]{
                 {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
@@ -17,6 +20,7 @@ public class Board extends JComponent implements KeyListener {
                 {0, 1, 1, 1, 0, 0, 0, 0, 1, 0},
                 {0, 0, 0, 1, 0, 1, 1, 0, 0, 0}
         };
+
 
     int heroPosX;
     int heroPosY;
@@ -45,8 +49,7 @@ public class Board extends JComponent implements KeyListener {
                 }
             }
         }
-
-        PositionedImage hero = new PositionedImage("Assets/hero-down.png", heroPosX, heroPosY);
+        PositionedImage hero = new PositionedImage(heroImage, heroPosX, heroPosY);
         hero.draw(graphics);
     }
 
@@ -66,14 +69,18 @@ public class Board extends JComponent implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
-        if (e.getKeyCode() == KeyEvent.VK_UP && table[heroPosY - 1][heroPosX] != 1 && ) {
+        if (e.getKeyCode() == KeyEvent.VK_UP && table[heroPosY - 1][heroPosX] != 1) {
             heroPosY -= 1;
+            heroImage = "Assets/hero-up.png";
         } else if(e.getKeyCode() == KeyEvent.VK_DOWN && table[heroPosY + 1][heroPosX] != 1) {
             heroPosY += 1;
+            heroImage = "Assets/hero-down.png";
         } else if(e.getKeyCode() == KeyEvent.VK_RIGHT && table[heroPosY][heroPosX + 1] != 1) {
             heroPosX += 1;
+            heroImage = "Assets/hero-right.png";
         } else if(e.getKeyCode() == KeyEvent.VK_LEFT && table[heroPosY][heroPosX - 1] != 1) {
             heroPosX -= 1;
+            heroImage = "Assets/hero-left.png";
         }
         // and redraw to have a new picture with the new coordinates
         repaint();
