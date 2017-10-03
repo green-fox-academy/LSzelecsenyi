@@ -79,7 +79,7 @@ public class Board extends JComponent implements KeyListener {
             }
         } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
             heroImage = "Assets/hero-right.png";
-            if (heroPosY != 9 && board[heroPosY][heroPosX + 1] != 1) {
+            if (heroPosX != 9 && board[heroPosY][heroPosX + 1] != 1) {
                 heroPosX += 1;
             }
         } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
