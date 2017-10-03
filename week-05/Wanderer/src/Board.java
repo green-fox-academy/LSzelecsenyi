@@ -5,21 +5,7 @@ import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
 
-    int testBoxX;
-    int testBoxY;
-
-    public Board() {
-        testBoxX = 300;
-        testBoxY = 300;
-
-        // set the size of your draw board
-        setPreferredSize(new Dimension(720, 720));
-        setVisible(true);
-    }
-
-    @Override
-    public void paint(Graphics graphics) {
-        int[][] table = new int[][]{
+    int[][] table = new int[][]{
                 {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
                 {0, 1, 1, 1, 0, 1, 0, 1, 1, 0},
@@ -32,12 +18,26 @@ public class Board extends JComponent implements KeyListener {
                 {0, 0, 0, 1, 0, 1, 1, 0, 0, 0}
         };
 
+    int heroPosX;
+    int heroPosY;
+
+    public Board() {
+        heroPosX = 0;
+        heroPosY = 0;
+
+        // set the size of your draw board
+        setPreferredSize(new Dimension(720, 720));
+        setVisible(true);
+    }
+
+
+//    @Override
+    public void paint(Graphics graphics) {
         super.paint(graphics);
-//        graphics.fillRect(testBoxX, testBoxY, 72, 72);
         for (int column = 0; column < 10; column++) {
             for (int row = 0; row < 10; row++) {
-                    PositionedImage floor = new PositionedImage("Assets/floor.png", column * 72, row * 72);
-                    PositionedImage wall = new PositionedImage("Assets/wall.png", column * 72, row * 72);
+                    PositionedImage floor = new PositionedImage("Assets/floor.png", row, column);
+                    PositionedImage wall = new PositionedImage("Assets/wall.png", row, column);
                 if (table[column][row] == 0) {
                     floor.draw(graphics);
                 } else if (table[column][row] == 1) {
@@ -46,6 +46,8 @@ public class Board extends JComponent implements KeyListener {
             }
         }
 
+        PositionedImage hero = new PositionedImage("Assets/hero-down.png", heroPosX, heroPosY);
+        hero.draw(graphics);
     }
 
 
@@ -64,10 +66,14 @@ public class Board extends JComponent implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            testBoxY -= 100;
-        } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            testBoxY += 100;
+        if (e.getKeyCode() == KeyEvent.VK_UP && table[heroPosY - 1][heroPosX] != 1 && ) {
+            heroPosY -= 1;
+        } else if(e.getKeyCode() == KeyEvent.VK_DOWN && table[heroPosY + 1][heroPosX] != 1) {
+            heroPosY += 1;
+        } else if(e.getKeyCode() == KeyEvent.VK_RIGHT && table[heroPosY][heroPosX + 1] != 1) {
+            heroPosX += 1;
+        } else if(e.getKeyCode() == KeyEvent.VK_LEFT && table[heroPosY][heroPosX - 1] != 1) {
+            heroPosX -= 1;
         }
         // and redraw to have a new picture with the new coordinates
         repaint();
