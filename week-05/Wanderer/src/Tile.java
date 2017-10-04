@@ -1,10 +1,10 @@
 
 public class Tile extends PositionedImage {
-    String url;
+    boolean isEmpty;
 
-    public String getUrl() {
-        return url;
+    public Tile(String filename, int posX, int posY) {
+        super(filename, posX, posY);
+        this.isEmpty = true;
     }
-
 
 }

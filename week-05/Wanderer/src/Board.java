@@ -9,7 +9,6 @@ public class Board extends JComponent implements KeyListener {
     int level = 1;
     Hero hero;
     Boss boss;
-    String heroImage = "Assets/hero-down.png";
     ArrayList<Monster> monsters;
     int[][] board = new int[][]{
                 {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
@@ -29,10 +28,6 @@ public class Board extends JComponent implements KeyListener {
         boss = new Boss();
         monsters = new ArrayList<>();
         generateMonster(3, monsters);
-
-//        monsters.add(new Monster(1));
-//        monsters.add(new Monster(2));
-//        monsters.add(new Monster(3));
         // set the size of your draw board
         setPreferredSize(new Dimension(720, 720));
         setVisible(true);
@@ -55,7 +50,6 @@ public class Board extends JComponent implements KeyListener {
             for (int row = 0; row < 10; row++) {
                     Floor floor = new Floor(row, column);
                     Wall wall = new Wall(row, column);
-
                 if (board[column][row] == 0) {
                     floor.draw(graphics);
                 } else if (board[column][row] == 1) {
@@ -64,9 +58,7 @@ public class Board extends JComponent implements KeyListener {
             }
         }
         hero.draw(graphics);
-
         boss.draw(graphics);
-
         for (int i = 0; i < monsters.size(); i++) {
             monsters.get(i).draw(graphics);
         }
