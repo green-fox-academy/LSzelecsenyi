@@ -28,10 +28,11 @@ public class Board extends JComponent implements KeyListener {
         hero = new Hero();
         boss = new Boss();
         monsters = new ArrayList<>();
-        monsters.add(new Monster(1));
-        monsters.add(new Monster(2));
-        monsters.add(new Monster(3));
-        Wall wall;
+        generateMonster(3, monsters);
+
+//        monsters.add(new Monster(1));
+//        monsters.add(new Monster(2));
+//        monsters.add(new Monster(3));
         // set the size of your draw board
         setPreferredSize(new Dimension(720, 720));
         setVisible(true);
@@ -97,6 +98,12 @@ public class Board extends JComponent implements KeyListener {
         }
         // and redraw to have a new picture with the new coordinates
         repaint();
+    }
+
+    public void generateMonster(int monsterNumber, ArrayList<Monster> monsters) {
+        for (int i = 0; i < monsterNumber; i++) {
+            monsters.add(new Monster(i-1));
+        }
     }
 
     public int getLevel() {

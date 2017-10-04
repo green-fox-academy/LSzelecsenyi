@@ -4,10 +4,7 @@
 //        it disappears from the area
 //        if its the hero, it is the end of the game
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 public class Character extends PositionedImage {
     int maxHP;

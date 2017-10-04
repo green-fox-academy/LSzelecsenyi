@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Monster extends Character {
 
     String picMonster;
@@ -13,5 +15,6 @@ public class Monster extends Character {
         this.posX = (int) (10.0 * Math.random());
         this.posY = (int) (10.0 * Math.random());
     }
+
 
 }
