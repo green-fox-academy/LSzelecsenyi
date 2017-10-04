@@ -50,7 +50,6 @@ public class Garden2 {
 
         garden.checkWateringNeed(garden.plants);
         garden.watering(garden.plants,45);
-//        garden.checkWaterAmounts(garden.plants);
         System.out.println();
         garden.checkWateringNeed(garden.plants);
         garden.watering(garden.plants,70);

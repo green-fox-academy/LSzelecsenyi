@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public class Aircraft {
     String type;
     int baseDamage;
     int maxAmmo;
     int currentAmmo;
+    int ammoNeeded;
     int allDamage;
 
     public Aircraft(String type, int baseDamage, int maxAmmo) {
@@ -18,11 +21,16 @@ public class Aircraft {
         currentAmmo = 0;
         return damage;
     }
-
+//doesn't work yet
     public int refill(int ammo) {
         int ammoNeeded = maxAmmo - currentAmmo;
-        currentAmmo = maxAmmo;
-        return ammo - ammoNeeded;
+        if (ammo >= ammoNeeded) {
+            currentAmmo = maxAmmo;
+            ammo -= ammoNeeded;
+        } else if (ammo < ammoNeeded) {
+            currentAmmo = ammo;
+            ammo = 0;
+        } return ammo;
     }
 
     public int getBaseDamage() {

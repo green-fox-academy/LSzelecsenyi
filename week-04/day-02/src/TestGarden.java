@@ -19,6 +19,5 @@ public class TestGarden {
 
         garden.checkWatering(garden.plants);
 
-        garden.checkWaterAmounts(garden);
     }
 }
