@@ -3,6 +3,7 @@ import javax.xml.stream.events.Characters;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class Board extends JComponent implements KeyListener {
 
@@ -10,6 +11,7 @@ public class Board extends JComponent implements KeyListener {
     Hero hero;
     Boss boss;
     String heroImage = "Assets/hero-down.png";
+    ArrayList<Monster> monsters;
     int[][] board = new int[][]{
                 {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
                 {0, 0, 0, 1, 0, 1, 0, 1, 1, 0},
@@ -26,12 +28,22 @@ public class Board extends JComponent implements KeyListener {
     public Board() {
         hero = new Hero();
         boss = new Boss();
+        monsters = new ArrayList<>();
+        monsters.add(new Monster(1));
+        monsters.add(new Monster(2));
+        monsters.add(new Monster(3));
         // set the size of your draw board
         setPreferredSize(new Dimension(720, 720));
         setVisible(true);
 
         while (board[boss.posY][boss.posX] != 0) {
             boss.posGen();
+        }
+
+        for (Character ch : monsters) {
+            while (board[ch.posY][ch.posX] != 0) {
+                ch.posGen();
+            }
         }
     }
 
@@ -54,6 +66,11 @@ public class Board extends JComponent implements KeyListener {
 
         PositionedImage bosz = new PositionedImage(boss.picBoss, boss.posX, boss.posY);
         bosz.draw(graphics);
+
+        for (int i = 0; i < monsters.size(); i++) {
+        PositionedImage monszter = new PositionedImage(monsters.get(i).picMonster, monsters.get(i).posX, monsters.get(i).posY);
+        monszter.draw(graphics);
+        }
 
 
     }
