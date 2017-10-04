@@ -52,8 +52,6 @@ public class Board extends JComponent implements KeyListener {
         super.paint(graphics);
         for (int column = 0; column < 10; column++) {
             for (int row = 0; row < 10; row++) {
-//                    PositionedImage floor = new PositionedImage("Assets/floor.png", row, column);
-//                    PositionedImage wall = new PositionedImage("Assets/wall.png", row, column);
                     Floor floor = new Floor(row, column);
                     Wall wall = new Wall(row, column);
 
@@ -64,15 +62,12 @@ public class Board extends JComponent implements KeyListener {
                 }
             }
         }
-        PositionedImage hiro = new PositionedImage(heroImage, hero.posX, hero.posY);
-        hiro.draw(graphics);
+        hero.draw(graphics);
 
-        PositionedImage bosz = new PositionedImage(boss.picBoss, boss.posX, boss.posY);
-        bosz.draw(graphics);
+        boss.draw(graphics);
 
         for (int i = 0; i < monsters.size(); i++) {
-        PositionedImage monszter = new PositionedImage(monsters.get(i).picMonster, monsters.get(i).posX, monsters.get(i).posY);
-        monszter.draw(graphics);
+            monsters.get(i).draw(graphics);
         }
 
 
@@ -95,22 +90,22 @@ public class Board extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            heroImage = hero.picUp;
+            hero.turnUp();
             if (hero.posY != 0 && board[hero.posY - 1][hero.posX] != 1) {
                 hero.posY -= 1;
             }
         } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            heroImage = hero.picDown;
+            hero.turnDown();
             if (hero.posY != 9 && board[hero.posY + 1][hero.posX] != 1) {
                 hero.posY += 1;
             }
         } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            heroImage = hero.picRight;
+            hero.turnRight();
             if (hero.posX != 9 && board[hero.posY][hero.posX + 1] != 1) {
                 hero.posX += 1;
             }
         } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            heroImage = hero.picLeft;
+            hero.turnLeft();
             if (hero.posX != 0 && board[hero.posY][hero.posX - 1] != 1) {
                 hero.posX -= 1;
             }

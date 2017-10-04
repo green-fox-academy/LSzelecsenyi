@@ -4,7 +4,10 @@
 //        it disappears from the area
 //        if its the hero, it is the end of the game
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Character extends PositionedImage {
     int maxHP;
@@ -16,16 +19,13 @@ public class Character extends PositionedImage {
     Dice d6;
     String defaultPic;
 
-public Character() {
-    this.maxHP = maxHP;
-    this.defend = defend;
-    this.strike = strike;
-    this.currentHP = maxHP;
+public Character(String filename, int posX, int posY) {
+    super(filename, posX, posY);
     d6 = new Dice();
     this.posX = posX;
     this.posY = posY;
-
 }
+
 
     public void posGen() {
         this.posY = (int) (10.0 * Math.random());

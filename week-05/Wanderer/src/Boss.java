@@ -4,6 +4,7 @@ public class Boss extends Character {
     int bossLevel;
 
     public Boss() {
+        super("Assets/boss.png", 1, 0);
 //        this.bossLevel = level;
         maxHP = maxHP + d6.dice() + d6.dice() + d6.dice();
         defend = d6.dice() + d6.dice();
