@@ -73,16 +73,13 @@ public class Board extends JComponent implements KeyListener {
 
     }
 
-
     // To be a KeyListener the class needs to have these 3 methods in it
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-
     }
 
     // But actually we can use just this one for our goals here
@@ -90,25 +87,13 @@ public class Board extends JComponent implements KeyListener {
     public void keyReleased(KeyEvent e) {
         // When the up or down keys hit, we change the position of our box
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            hero.turnUp();
-            if (hero.posY != 0 && board[hero.posY - 1][hero.posX] != 1) {
-                hero.posY -= 1;
-            }
+            hero.turnUp(board);
         } else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-            hero.turnDown();
-            if (hero.posY != 9 && board[hero.posY + 1][hero.posX] != 1) {
-                hero.posY += 1;
-            }
+            hero.turnDown(board);
         } else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            hero.turnRight();
-            if (hero.posX != 9 && board[hero.posY][hero.posX + 1] != 1) {
-                hero.posX += 1;
-            }
+            hero.turnRight(board);
         } else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-            hero.turnLeft();
-            if (hero.posX != 0 && board[hero.posY][hero.posX - 1] != 1) {
-                hero.posX -= 1;
-            }
+            hero.turnLeft(board);
         }
         // and redraw to have a new picture with the new coordinates
         repaint();
