@@ -13,9 +13,4 @@ public class Boss extends Character {
         this.picBoss = "Assets/boss.png";
     }
 
-    public void posGen() {
-        this.posY = (int) (10.0 * Math.random());
-        this.posX = (int) (10.0 * Math.random());
-    }
-
 }

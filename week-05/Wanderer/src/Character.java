@@ -24,5 +24,10 @@ public Character() {
     this.posY = posY;
 }
 
+    public void posGen() {
+        this.posY = (int) (10.0 * Math.random());
+        this.posX = (int) (10.0 * Math.random());
+    }
+
 
 }
