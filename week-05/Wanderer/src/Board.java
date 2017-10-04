@@ -1,11 +1,14 @@
 import javax.swing.*;
+import javax.xml.stream.events.Characters;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
 
-    Hero hero = new Hero();
+    int level = 1;
+    Hero hero;
+    Boss boss;
     String heroImage = "Assets/hero-down.png";
     int[][] board = new int[][]{
                 {0, 0, 0, 1, 0, 1, 0, 0, 0, 0},
@@ -21,9 +24,15 @@ public class Board extends JComponent implements KeyListener {
         };
 
     public Board() {
+        hero = new Hero();
+        boss = new Boss();
         // set the size of your draw board
         setPreferredSize(new Dimension(720, 720));
         setVisible(true);
+
+        while (board[boss.posY][boss.posX] != 0) {
+            boss.posGen();
+        }
     }
 
 //    @Override
@@ -42,6 +51,11 @@ public class Board extends JComponent implements KeyListener {
         }
         PositionedImage hiro = new PositionedImage(heroImage, hero.posX, hero.posY);
         hiro.draw(graphics);
+
+        PositionedImage bosz = new PositionedImage(boss.picBoss, boss.posX, boss.posY);
+        bosz.draw(graphics);
+
+
     }
 
 
@@ -83,5 +97,9 @@ public class Board extends JComponent implements KeyListener {
         }
         // and redraw to have a new picture with the new coordinates
         repaint();
+    }
+
+    public int getLevel() {
+        return level;
     }
 }

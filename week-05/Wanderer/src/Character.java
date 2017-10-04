@@ -4,7 +4,7 @@
 //        it disappears from the area
 //        if its the hero, it is the end of the game
 
-public class Character {
+public class Character{
     int maxHP;
     int currentHP;
     int defend;
@@ -19,8 +19,10 @@ public Character() {
     this.defend = defend;
     this.strike = strike;
     this.currentHP = maxHP;
+    d6 = new Dice();
     this.posX = posX;
     this.posY = posY;
-    d6 = new Dice();
 }
+
+
 }
