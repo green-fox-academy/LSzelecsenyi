@@ -9,12 +9,18 @@ public class Character {
     int currentHP;
     int defend;
     int strike;
-    Dice d6 = new Dice();
+    int posX;
+    int posY;
+    Dice d6;
+    String defaultPic;
 
 public Character() {
     this.maxHP = maxHP;
     this.defend = defend;
     this.strike = strike;
     this.currentHP = maxHP;
+    this.posX = posX;
+    this.posY = posY;
+    d6 = new Dice();
 }
 }
