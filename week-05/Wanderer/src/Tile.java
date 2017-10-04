@@ -1,7 +1,5 @@
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
-public class Tile {
+public class Tile extends PositionedImage {
     String url;
 
     public String getUrl() {

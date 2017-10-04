@@ -4,7 +4,9 @@
 //        it disappears from the area
 //        if its the hero, it is the end of the game
 
-public class Character{
+import java.awt.*;
+
+public class Character extends PositionedImage {
     int maxHP;
     int currentHP;
     int defend;
@@ -22,11 +24,18 @@ public Character() {
     d6 = new Dice();
     this.posX = posX;
     this.posY = posY;
+
 }
 
     public void posGen() {
         this.posY = (int) (10.0 * Math.random());
         this.posX = (int) (10.0 * Math.random());
+    }
+
+    public void draw(Graphics graphics) {
+        if (image != null) {
+            graphics.drawImage(image, posX * SIZE, posY * SIZE, null);
+        }
     }
 
 

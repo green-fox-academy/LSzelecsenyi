@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.xml.stream.events.Characters;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -32,6 +31,7 @@ public class Board extends JComponent implements KeyListener {
         monsters.add(new Monster(1));
         monsters.add(new Monster(2));
         monsters.add(new Monster(3));
+        Wall wall;
         // set the size of your draw board
         setPreferredSize(new Dimension(720, 720));
         setVisible(true);
@@ -52,8 +52,11 @@ public class Board extends JComponent implements KeyListener {
         super.paint(graphics);
         for (int column = 0; column < 10; column++) {
             for (int row = 0; row < 10; row++) {
-                    PositionedImage floor = new PositionedImage("Assets/floor.png", row, column);
-                    PositionedImage wall = new PositionedImage("Assets/wall.png", row, column);
+//                    PositionedImage floor = new PositionedImage("Assets/floor.png", row, column);
+//                    PositionedImage wall = new PositionedImage("Assets/wall.png", row, column);
+                    Floor floor = new Floor(row, column);
+                    Wall wall = new Wall(row, column);
+
                 if (board[column][row] == 0) {
                     floor.draw(graphics);
                 } else if (board[column][row] == 1) {

@@ -6,6 +6,10 @@ import java.io.IOException;
 
 public class PositionedImage {
 
+    public PositionedImage() {
+
+    }
+
     static int SIZE = 72;
     BufferedImage image;
     int posX, posY;

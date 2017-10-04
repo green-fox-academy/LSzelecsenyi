@@ -1,6 +1,6 @@
-public class Wall extends Tile {
+public class Wall extends PositionedImage {
 
-    public Wall() {
-        this.url = "Assets/wall.png";
+    public Wall(int posX, int posY) {
+        super("Assets/wall.png", posX, posY);
     }
 }
