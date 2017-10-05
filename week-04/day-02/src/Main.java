@@ -16,6 +16,11 @@ public class Main {
 
         System.out.println(carrier.ammoStore);
 
+        F35 f35 = new F35();
+        System.out.println(f35.refill(30));
+        System.out.println(f35.currentAmmo);
+
+
 
 
     }

@@ -31,7 +31,7 @@ public class Carrier {
         int countF35 = 0;
         for (int i = 0; i < squad.size(); i++) {
             squad.get(i).refill(this.ammoStore);
-            this.ammoStore = ammoStore - squad.get(i).ammoNeeded;
+            this.ammoStore = squad.get(i).refill(ammoStore);
         } return ammoStore;
     }
 
