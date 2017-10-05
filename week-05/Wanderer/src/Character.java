@@ -35,5 +35,19 @@ public Character(String filename, int posX, int posY) {
         }
     }
 
+    public int getMaxHP() {
+        return maxHP;
+    }
 
+    public int getCurrentHP() {
+        return currentHP;
+    }
+
+    public int getDefend() {
+        return defend;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }

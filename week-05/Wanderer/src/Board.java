@@ -27,9 +27,9 @@ public class Board extends JComponent implements KeyListener {
         hero = new Hero();
         boss = new Boss();
         monsters = new ArrayList<>();
-        generateMonster(3, monsters);
+        generateMonster(3);
         // set the size of your draw board
-        setPreferredSize(new Dimension(720, 720));
+        setPreferredSize(new Dimension(720, 750));
         setVisible(true);
 
         while (board[boss.posY][boss.posX] != 0) {
@@ -61,6 +61,7 @@ public class Board extends JComponent implements KeyListener {
         boss.draw(graphics);
         for (int i = 0; i < monsters.size(); i++) {
             monsters.get(i).draw(graphics);
+        hub(graphics);
         }
 
 
@@ -92,10 +93,22 @@ public class Board extends JComponent implements KeyListener {
         repaint();
     }
 
-    public void generateMonster(int monsterNumber, ArrayList<Monster> monsters) {
+    public void generateMonster(int monsterNumber) {
         for (int i = 0; i < monsterNumber; i++) {
-            monsters.add(new Monster(i-1));
+            this.monsters.add(new Monster(i-1));
         }
+    }
+
+//    Hero (Level 1) HP: 8/10 | DP: 8 | SP: 6
+
+    public void hub(Graphics graphics) {
+        StringBuilder sb = new StringBuilder();
+            sb.append("Hero (Level " + getLevel() + ") HP: " + hero.getCurrentHP());
+            sb.append("/" + hero.getMaxHP() + " | DP: " + hero.getDefend() + " | SP: " + hero.getStrike());
+            String hub = sb.toString();
+            graphics.setColor(Color.BLACK);
+            graphics.setFont(new Font("Impact", Font.PLAIN, 22));
+            graphics.drawString(hub, 12, 743);
     }
 
     public int getLevel() {

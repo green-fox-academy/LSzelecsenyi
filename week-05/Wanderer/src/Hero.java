@@ -21,45 +21,39 @@ public class Hero extends Character {
     }
 
 
+
+
     public void turnRight(int[][] board) {
         if (this.posX != 9 && board[this.posY][this.posX + 1] != 1) {
             this.posX += 1;
         }
-        try {
-            this.image = ImageIO.read(new File(picRight));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        changePic(new File(picRight));
     }
 
     public void turnLeft(int[][] board) {
         if (this.posX != 0 && board[this.posY][this.posX - 1] != 1) {
             this.posX -= 1;
         }
-        try {
-            this.image = ImageIO.read(new File(picLeft));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        changePic(new File(picLeft));
     }
 
     public void turnUp(int[][] board) {
         if (posY != 0 && board[posY - 1][posX] != 1) {
             posY -= 1;
         }
-        try {
-            this.image = ImageIO.read(new File(picUp));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        changePic(new File(picUp));
     }
 
     public void turnDown(int[][] board) {
         if (this.posY != 9 && board[this.posY + 1][this.posX] != 1) {
             this.posY += 1;
         }
+        changePic(new File(picDown));
+    }
+
+    private void changePic(File input) {
         try {
-            this.image = ImageIO.read(new File(picDown));
+            this.image = ImageIO.read(input);
         } catch (IOException e) {
             e.printStackTrace();
         }
