@@ -68,12 +68,10 @@ public class Deck {
         Deck pakli = new Deck(52);
         System.out.println(pakli);
         pakli.shuffleDeck();
+        printDeck(pakli);
         Card drawn = pakli.draw();
         System.out.println(drawn);
         System.out.println(pakli);
-
     }
-
-
 
 }

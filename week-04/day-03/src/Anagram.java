@@ -13,4 +13,10 @@ public class Anagram {
             return Arrays.equals(charArray1, charArray2);
         }
     }
+
+    public static void main(String[] args) {
+        Anagram anagram = new Anagram();
+        anagram.anagramChecker("dog", "god");
+    }
+
 }
