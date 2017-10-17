@@ -29,13 +29,4 @@ public class Gnirts implements CharSequence{
             return sb.toString();
     }
 
-    @Override
-    public IntStream chars() {
-        return null;
-    }
-
-    @Override
-    public IntStream codePoints() {
-        return null;
-    }
 }
