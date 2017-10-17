@@ -18,8 +18,8 @@ public class Reservations implements ResInterface{
     public String getDowBooking() {
         ArrayList<String> dow = new ArrayList<>(Arrays.asList("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"));
         Random r = new Random();
-        int randomInt = r.nextInt(7) + 1;
-        return dow.get(randomInt -1);
+        int randomInt = r.nextInt(7);
+        return dow.get(randomInt);
     }
 
     @Override
@@ -28,8 +28,8 @@ public class Reservations implements ResInterface{
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 8; i++) {
             Random r = new Random();
-            int randomInt = r.nextInt(alphabet.length()) + 1;
-            sb.append(alphabet.charAt(randomInt - 1));
+            int randomInt = r.nextInt(alphabet.length());
+            sb.append(alphabet.charAt(randomInt));
         }
         return sb.toString();
     }
