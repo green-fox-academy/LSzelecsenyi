@@ -8,6 +8,8 @@ public class MainCharSequence {
         System.out.println(g.charAt(1));
         System.out.println(g.subSequence(0, 1));
 
+        Shifter s = new Shifter("example", 2);
+        System.out.println(s.charAt(6));
 
     }
 }
