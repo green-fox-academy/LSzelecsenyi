@@ -22,7 +22,6 @@ public class Gnirts implements CharSequence{
 
     @Override
     public CharSequence subSequence(int start, int end) {
-        //CharSequence sequence = "";
         StringBuilder sb = new StringBuilder();
         for (int i = ((str.length() - 1) - start); i > ((str.length() - 1) - end); i--) {
             sb.append(str.charAt(i));
