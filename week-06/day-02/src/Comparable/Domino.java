@@ -2,7 +2,7 @@ package Comparable;
 
 import java.util.Arrays;
 
-public class Domino implements Comparable<Domino>{
+public class Domino implements Comparable<Domino>, Printable{
     private final int[] values;
 
     public Domino(int valueA, int valueB) {
@@ -25,5 +25,9 @@ public class Domino implements Comparable<Domino>{
         } else {
             return this.values[1] - d.values[1];
         }
+    }
+
+    public void printAllFields() {
+        System.out.println(this.toString());
     }
 }
