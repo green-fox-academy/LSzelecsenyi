@@ -9,4 +9,8 @@ gradle-app.setting
 out
 *.xml
 *.iml
+<<<<<<< HEAD
 .gf.json
+=======
+.gf.json
+>>>>>>> 24b2d638a2df379b07a4ab01e808b84153fc2f83
