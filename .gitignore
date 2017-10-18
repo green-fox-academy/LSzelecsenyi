@@ -1,5 +1,12 @@
-.idea
+.idea/**/gradle.xml
+.idea/**/libraries
+.gradle
+**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+.idea/
 out
 *.xml
 *.iml
-*.json
+.gf.json
