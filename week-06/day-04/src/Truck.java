@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Truck {
@@ -93,7 +92,7 @@ public class Truck {
         for (Map.Entry<TruckColor, Integer> entry : truckColorMap.entrySet()) {
             TruckColor key = entry.getKey();
             Integer value = entry.getValue();
-            System.out.println(key + " TRUCKS: " + value + " db");
+            System.out.println(key + " TRUCKS: " + value + " PIECE(S)");
         }
     }
 
@@ -102,18 +101,10 @@ public class Truck {
         for (Map.Entry<TruckType, Integer> entry : truckTypeMap.entrySet()) {
             TruckType key = entry.getKey();
             Integer value = entry.getValue();
-            System.out.println(key + " TRUCKS: " + value + " db");
+            System.out.println(key + " TRUCKS: " + value + " PIECE(S)");
         }
     }
 
-    public void printMostCommonTruck(Map<TruckType, Integer> truckTypeMap) {
-        System.out.println("THE MOST COMMON TYPE AND COLOR COMBINATION IS:");
-        for (Map.Entry<TruckType, Integer> entry : truckTypeMap.entrySet()) {
-            TruckType key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key + " TRUCKS: " + value + " db");
-        }
-    }
 
     @Override
     public boolean equals(Object other){
