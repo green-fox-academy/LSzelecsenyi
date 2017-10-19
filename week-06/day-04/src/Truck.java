@@ -79,8 +79,14 @@ public class Truck {
                 mostCommonTruckMap.put(truck, 1);
             }
         }
-        printTypeMap(mostCommonTruckMap);
+        Map.Entry<Truck, Integer> maxEntry = null;
+        for(Map.Entry<Truck, Integer> entry : mostCommonTruckMap.entrySet()){
+            if(maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+                maxEntry = entry;
+        }
+        System.out.println("MOST COMMON-COLOR COMBINATION IS: " + maxEntry.getKey().color + "-" + maxEntry.getKey().type);;
     }
+
 
     public void printColorMap(Map<TruckColor, Integer> truckColorMap) {
             System.out.println("TRUCK COLORS AND THEIR OCCURRENCES ARE");

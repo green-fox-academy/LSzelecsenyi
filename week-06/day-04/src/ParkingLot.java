@@ -9,6 +9,8 @@ public class ParkingLot {
         teheroto.sumColor(trucks);
         System.out.println();
         teheroto.sumType(trucks);
+        System.out.println();
+        teheroto.getMostCommonTruck(trucks);
     }
 
 
