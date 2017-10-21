@@ -4,107 +4,89 @@ import java.util.Map;
 
 public class Truck {
 
+
     public enum TruckType {IFA, ZIL, BARKAS, KAMAZ, ZUK, GAZ};
-    public enum TruckColor {RUSTY, WORN, IVORY, POTTYBLUE, YELLOWISH};
+    public enum TruckColor {RUSTY, WORN, POTTYBLUE, YELLOWISH, MUDDY};
     TruckType type;
     TruckColor color;
-    String name;
+    ArrayList<Truck> trucks;
+    HashMap mostCommonTruckMap;
 
     public Truck() {
-        type = randomType();
-        color = randomColor();
-        name = getColor() + " " + getColor();
+        type = (TruckType) randomAttribute("type");
+        color = (TruckColor) randomAttribute("color");
+        trucks = new ArrayList<>();
     }
 
-    public TruckType randomType() {
-        TruckType type = TruckType.values()[(int) (Math.random() * TruckType.values().length)];
-        return type;
-    }
-
-    public TruckColor randomColor() {
-        TruckColor color = TruckColor.values()[(int) (Math.random() * TruckColor.values().length)];
-        return color;
-    }
-
-    public TruckType getType() {
-        return type;
-    }
-
-    public TruckColor getColor() {
-        return color;
+    public Enum randomAttribute(String attribute) {
+        if ( attribute == "color") {
+            Enum color = TruckColor.values()[(int) (Math.random() * TruckColor.values().length)];
+            return color;
+        } else {
+            Enum type = TruckType.values()[(int) (Math.random() * TruckType.values().length)];
+            return type;
+        }
     }
 
     public ArrayList<Truck> generateTruck(int howMany) {
-        ArrayList<Truck> trucks = new ArrayList<>();
+        this.trucks = new ArrayList<>();
         for (int i = 0; i < howMany; i++) {
             trucks.add(new Truck());
         }
         return trucks;
     }
 
-    public void sumColor (ArrayList<Truck> trucks) {
-        Map<TruckColor, Integer> truckColorMap = new HashMap<>();
-        for (Truck truck : trucks) {
-            if (truckColorMap.containsKey(truck.getColor())) {
-                int count = truckColorMap.get(truck.getColor());
-                truckColorMap.put(truck.getColor(), count + 1);
-            } else {
-                truckColorMap.put(truck.getColor(), 1);
-            }
-        }
-        printColorMap(truckColorMap);
+    public Enum getAttribute(String attribute) {
+        if (attribute == "color") {
+            return color;
+        } else if (attribute == "type") {
+            return type;
+        } else return null;
     }
 
-    public void sumType (ArrayList<Truck> trucks) {
-        Map<TruckType, Integer> truckTypeMap = new HashMap<>();
-        for (Truck truck : trucks) {
-            if (truckTypeMap.containsKey(truck.getType())) {
-                int count = truckTypeMap.get(truck.getType());
-                truckTypeMap.put(truck.getType(), count + 1);
-            } else {
-                truckTypeMap.put(truck.getType(), 1);
-            }
-        }
-        printTypeMap(truckTypeMap);
-    }
-
-    public void getMostCommonTruck(ArrayList<Truck> trucks) {
-        Map<Truck, Integer> mostCommonTruckMap = new HashMap<>();
+    public void createMostCommonTruckMap(ArrayList<Truck> trucks) {
+        this.mostCommonTruckMap = new HashMap<Truck, Integer>();
         for (Truck truck : trucks) {
             if (mostCommonTruckMap.containsKey(truck)) {
-                int count = mostCommonTruckMap.get(truck);
+                int count = (int) mostCommonTruckMap.get(truck);
                 mostCommonTruckMap.put(truck, count + 1);
             } else {
                 mostCommonTruckMap.put(truck, 1);
             }
         }
+    }
+
+    public void getMostCommonTruck(Map<Truck, Integer> mostCommonTruckMap) {
         Map.Entry<Truck, Integer> maxEntry = null;
         for(Map.Entry<Truck, Integer> entry : mostCommonTruckMap.entrySet()){
             if(maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
                 maxEntry = entry;
         }
-        System.out.println("MOST COMMON-COLOR COMBINATION IS: " + maxEntry.getKey().color + "-" + maxEntry.getKey().type);;
+        System.out.println("MOST COMMON-COLOR COMBINATION IS: " + maxEntry.getKey().color + "-" + maxEntry.getKey().type);
     }
 
-
-    public void printColorMap(Map<TruckColor, Integer> truckColorMap) {
-            System.out.println("TRUCK COLORS AND THEIR OCCURRENCES ARE");
-        for (Map.Entry<TruckColor, Integer> entry : truckColorMap.entrySet()) {
-            TruckColor key = entry.getKey();
+    public void printMap(Map<Enum, Integer> truckTypeMap) {
+        System.out.println("TRUCK TYPES AND THEIR OCCURRENCES ARE");
+        for (Map.Entry<Enum, Integer> entry : truckTypeMap.entrySet()) {
+            Enum key = entry.getKey();
             Integer value = entry.getValue();
             System.out.println(key + " TRUCKS: " + value + " PIECE(S)");
         }
+        System.out.println();
     }
 
-    public void printTypeMap(Map<TruckType, Integer> truckTypeMap) {
-            System.out.println("TRUCK TYPES AND THEIR OCCURRENCES ARE");
-        for (Map.Entry<TruckType, Integer> entry : truckTypeMap.entrySet()) {
-            TruckType key = entry.getKey();
-            Integer value = entry.getValue();
-            System.out.println(key + " TRUCKS: " + value + " PIECE(S)");
+    public void sumAttribute (ArrayList<Truck> trucks, String attribute) {
+        Map<Enum, Integer> attributeMap = new HashMap<>();
+        for (Truck truck : trucks) {
+            if (attributeMap.containsKey(truck.getAttribute(attribute))) {
+                int count = attributeMap.get(truck.getAttribute(attribute));
+                attributeMap.put(truck.getAttribute(attribute), count + 1);
+            } else {
+                attributeMap.put(truck.getAttribute(attribute), 1);
+            }
         }
+        printMap(attributeMap);
     }
-
 
     @Override
     public boolean equals(Object other){

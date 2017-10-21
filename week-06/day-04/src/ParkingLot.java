@@ -6,12 +6,9 @@ public class ParkingLot {
 
         Truck teheroto = new Truck();
         ArrayList<Truck> trucks = teheroto.generateTruck(256);
-        teheroto.sumColor(trucks);
-        System.out.println();
-        teheroto.sumType(trucks);
-        System.out.println();
-        teheroto.getMostCommonTruck(trucks);
+        teheroto.sumAttribute(trucks, "color");
+        teheroto.sumAttribute(trucks, "type");
+        teheroto.createMostCommonTruckMap(trucks);
+        teheroto.getMostCommonTruck(teheroto.mostCommonTruckMap);
     }
-
-
 }
