@@ -6,7 +6,7 @@ public class SplitString {
     public static void main(String[] args) {
 
         SplitString split = new SplitString();
-        split.splitString("CutHere", 10);
+        split.splitString("CutHere", 3);
 
     }
 
