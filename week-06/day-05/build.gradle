@@ -16,7 +16,7 @@ jar {
         }
     }
     manifest {
-        attributes 'Main-Class': 'java.Lottery'
+        attributes 'Main-Class': 'TodoApp'
     }
 }
 
@@ -24,5 +24,4 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'net.sf.jopt-simple:jopt-simple:6.0-alpha-2'
     compile 'com.opencsv:opencsv:4.0'
-
 }
