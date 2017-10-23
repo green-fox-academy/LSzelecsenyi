@@ -6,7 +6,6 @@ public class SortTheArray {
     public static void main(String[] args) {
 
         Integer[] arrayToSort = {3, 6, 66, 4, 64, 13, 43, 5, 8};
-        int[] arrayToSort2 = {1, 2, 55, 13, 42};
 
         sortArray(arrayToSort);
         System.out.println();
