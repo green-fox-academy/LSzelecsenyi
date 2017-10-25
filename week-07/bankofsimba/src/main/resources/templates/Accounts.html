@@ -12,6 +12,7 @@
         <th align="left" width="50">ACCOUNTHOLDER</th>
         <th align="left" width="50">BALANCE</th>
         <th align="left" width="50">SPECIES</th>
+        <th align="left" width="50">GOOD/BAD</th>
     </tr>
     <tr th:each="account : ${accounts}" th:style="${account.getKing()} ? 'color:red'" >
 
@@ -19,6 +20,7 @@
         <td  th:text="${account.name}"></td>
         <td th:text="${account.balance}"></td>
         <td th:text="${account.animalType}"></td>
+        <td th:text="${account.getBad()} ? 'BAAAD' : 'GOOOD'"></td>
     </tr>
 </table>
 </body>
