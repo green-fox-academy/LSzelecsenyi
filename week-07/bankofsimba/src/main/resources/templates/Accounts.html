@@ -8,11 +8,11 @@
 <body>
 <table>
     <tr>
-        <th align="left" width="40">INDEX</th>
-        <th align="left" width="50">ACCOUNTHOLDER</th>
-        <th align="left" width="50">BALANCE</th>
-        <th align="left" width="50">SPECIES</th>
-        <th align="left" width="50">GOOD/BAD</th>
+        <th align="left" width="40">Index</th>
+        <th align="left" width="50">Accountholder</th>
+        <th align="left" width="50">Balance</th>
+        <th align="left" width="50">Species</th>
+        <th align="left" width="50">Good/Bad</th>
     </tr>
     <tr th:each="account : ${accounts}" th:style="${account.getKing()} ? 'color:red'" >
 
@@ -20,7 +20,7 @@
         <td  th:text="${account.name}"></td>
         <td th:text="${account.balance}"></td>
         <td th:text="${account.animalType}"></td>
-        <td th:text="${account.getBad()} ? 'BAAAD' : 'GOOOD'"></td>
+        <td th:text="${account.getBad()} ? 'bad' : 'good'"></td>
     </tr>
 </table>
 </body>

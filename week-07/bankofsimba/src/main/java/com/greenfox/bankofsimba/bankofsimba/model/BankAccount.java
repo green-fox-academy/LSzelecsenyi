@@ -56,4 +56,7 @@ public class BankAccount {
         return isBad;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
