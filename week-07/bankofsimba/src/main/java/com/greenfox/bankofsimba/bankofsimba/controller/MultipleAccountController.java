@@ -1,4 +1,5 @@
-package com.greenfox.bankofsimba.bankofsimba.model;
+package com.greenfox.bankofsimba.bankofsimba.controller;
+import com.greenfox.bankofsimba.bankofsimba.model.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,12 @@ public class MultipleAccountController {
     @RequestMapping("/Accounts")
     public String accounts(Model model) {
         accounts = new ArrayList<>();
-        accounts.add(new BankAccount("Mufasa", 70000000d, "lion"));
-        accounts.add(new BankAccount("Rafiki", 5000d, "monkey"));
+        accounts.add(new BankAccount("Mufasa", 70000d, "lion"));
+        accounts.add(new BankAccount("Rafiki", 500d, "monkey"));
         accounts.add(new BankAccount("Zazu", 30d, "parrot"));
         accounts.add(new BankAccount("Pumbaa", 400d, "pig"));
-        accounts.add(new BankAccount("Scar", 2500000d, "lion"));
-        model.addAttribute("textToPrint1", "<em>HTML</em>");
-        model.addAttribute("textToPrint2", "<b>Enjoy yourself!</b>");
+        accounts.add(new BankAccount("Scar", 250000d, "lion"));
+        model.addAttribute("accounts", accounts);
         return "Accounts";
     }
 

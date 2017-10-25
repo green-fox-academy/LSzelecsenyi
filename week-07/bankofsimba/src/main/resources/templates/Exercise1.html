@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
 </head>
 <body>
-$END$
+<span th:text="${account}"/> <span th:inline="text"> [[${#numbers.formatDecimal(balance, 0, 'COMMA', 2, 'POINT')}]]</span> <span th:text="${currency}"/> <span th:text="${animalType}"/>
 </body>
 </html>
