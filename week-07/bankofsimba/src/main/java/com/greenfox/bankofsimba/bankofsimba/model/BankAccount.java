@@ -1,15 +1,17 @@
 package com.greenfox.bankofsimba.bankofsimba.model;
 
+import org.springframework.ui.Model;
+
 public class BankAccount {
 
     String name;
-    double balance;
+    int balance;
     String animalType;
     String currency;
     boolean isKing;
     boolean isBad;
 
-    public BankAccount(String name, double balance, String animalType) {
+    public BankAccount(String name, int balance, String animalType) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
@@ -56,7 +58,15 @@ public class BankAccount {
         return isBad;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public void donateAnimal () {
+        if (this.isKing) {
+            setBalance((int) (getBalance() + 100));
+        } else {
+            setBalance((int) (getBalance() + 10));
+        }
     }
 }
