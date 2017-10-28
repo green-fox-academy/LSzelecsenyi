@@ -2,28 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:color="http://java.sun.com/xml/ns/persistence/orm">
 <head>
     <title>Thymeleaf Exercise #</title>
-    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{style.css}" />
     <meta charset="utf-8" />
 </head>
 <body>
 <table>
     <tr>
-        <th align="left" width="40">Index</th>
-        <th align="left" width="50">Accountholder</th>
-        <th align="left" width="50">Balance</th>
-        <th align="left" width="50">Species</th>
-        <th align="left" width="50">Good/Bad</th>
-        <th align="left" width="130">Donate</th>
+        <th width="80">Index</th>
+        <th width="250">Accountholder</th>
+        <th width="150">Balance</th>
+        <th width="150">Species</th>
+        <th width="150">Good/Bad</th>
+        <th width="170">Donate</th>
     </tr>
     <tr th:each="account : ${accounts}" th:style="${account.getKing()} ? 'color:red'" >
         <td th:text="${accountStat.index}"></td>
         <td  th:text="${account.name}"></td>
-        <td th:text="${account.balance}"></td>
+        <td class="thirdcol" th:text="${#numbers.formatDecimal(account.balance, 1, 2, 'POINT')}"></td>
         <td th:text="${account.animalType}"></td>
-        <td th:text="${account.getBad()} ? 'bad guy' : 'good guy'"></td>
-        <td> <form th:action="@{/accounts}" th:object="${account}" method="post">
-        <button style="margin: 5px" type="submit" th:text="'Donate ' + ${account.name}"></button>
+        <td th:text="${account.getBad()} ? 'bad guy' : 'good one'"></td>
+        <td> <form th:action="@{/accounts}" method="post">
+        <input name="name" type="hidden" th:value="${account.name}" />
+        <button type="submit" th:text="'Donate'"></button>
     </form></td>
+    </tr>
+    <tr>
+        <form th:action="@{/addaccount}" th:object="${addaccount}" method="post">
+            <th><input type="submit" value="Add account"/></th>
+            <select>
+
+            </select>
+
+            <th><input type="text" th:field="*{name}"/></th>
+            <th><input type="number" th:field="*{balance}" min="1" value="1" placeholder="1 or more"/></th>
+            <th><input type="text" th:field="*{animalType}"/></th>
+        </form>
     </tr>
 </table>
 </body>

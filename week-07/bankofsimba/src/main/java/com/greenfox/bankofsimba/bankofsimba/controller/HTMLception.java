@@ -4,7 +4,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class VeryImportatntStringController {
+public class HTMLception {
 
     @RequestMapping ("/VeryImportantString")
     public String account(Model model) {
