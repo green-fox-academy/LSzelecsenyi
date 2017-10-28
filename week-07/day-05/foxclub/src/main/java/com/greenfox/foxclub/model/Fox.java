@@ -8,11 +8,24 @@ public class Fox {
 private String name;
 private String food;
 private String drink;
-List<String> tricks;
+List<Trick> tricks;
 
     public Fox() {
     tricks = new ArrayList<>();
-}
+    name = "Foxy Love";
+    food = "pizza";
+    drink = "Lemonade";
+    }
+
+    public void learnTrick(String name) {
+        tricks.add(new Trick(name));
+    }
+
+//    public void listTricks () {
+//        if (this.tricks.size() == 0) {
+//            return
+//        }
+//    }
 
     public String getName() {
         return name;
@@ -24,10 +37,6 @@ List<String> tricks;
 
     public String getDrink() {
         return drink;
-    }
-
-    public List<String> getTricks() {
-        return tricks;
     }
 
     public void setName(String name) {
@@ -42,7 +51,7 @@ List<String> tricks;
         this.drink = drink;
     }
 
-    public void setTricks(List<String> tricks) {
-        this.tricks = tricks;
+    public List<Trick> getTrickList() {
+        return tricks;
     }
 }
