@@ -1,5 +1,5 @@
 package com.greenfox.helloworld;
-import org.springframework.context.annotation.*;
+import org.testng.annotations.Configuration;
 
 @Configuration
 public class HelloWorldConfig {
