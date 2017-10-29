@@ -23,4 +23,7 @@ public class Bank extends ArrayList {
         this.accounts = accounts;
     }
 
+    public void addAccount(BankAccount account) {
+        accounts.add(account);
+    }
 }

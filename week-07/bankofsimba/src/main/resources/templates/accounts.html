@@ -28,14 +28,13 @@
     </tr>
     <tr>
         <form th:action="@{/addaccount}" th:object="${addaccount}" method="post">
+            <th></th>
+            <th><input type="text" th:field="*{name}" placeholder="Accountholder's name"/></th>
+            <th><input type="number" th:field="*{balance}" placeholder="1 or more"/></th>
+            <th><input type="text" th:field="*{animalType}" placeholder="Species"/></th>
+            <th></th>
             <th><input type="submit" value="Add account"/></th>
-            <select>
 
-            </select>
-
-            <th><input type="text" th:field="*{name}"/></th>
-            <th><input type="number" th:field="*{balance}" min="1" value="1" placeholder="1 or more"/></th>
-            <th><input type="text" th:field="*{animalType}"/></th>
         </form>
     </tr>
 </table>

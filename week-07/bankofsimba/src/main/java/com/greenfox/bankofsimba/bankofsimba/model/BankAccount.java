@@ -41,11 +41,6 @@ public class BankAccount {
         return isKing;
     }
 
-
-    public void setKing(boolean king) {
-        isKing = king;
-    }
-
     public void setBad() {
         if (this.name == "Scar") {
             isBad = true;
@@ -64,7 +59,7 @@ public class BankAccount {
         return name;
     }
 
-    public double getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
@@ -75,7 +70,6 @@ public class BankAccount {
     public void setAnimalType(String animalType) {
         this.animalType = animalType;
     }
-
 
     public String getAnimalType() {
         return animalType;
