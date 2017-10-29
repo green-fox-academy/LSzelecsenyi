@@ -12,15 +12,13 @@ public class BankAccount {
     public BankAccount() {
     }
 
-    public BankAccount(String name, int balance, String animalType) {
+    public BankAccount(String name, int balance, String animalType, boolean isKing, boolean isBad) {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
         currency = "Cobble";
-//        isKing = false;
-//        isBad = false;
-        setKing();
-        setBad();
+        this.isKing = isKing;
+        this.isBad = isBad;
     }
 
     public void donateAnimal () {
@@ -31,28 +29,20 @@ public class BankAccount {
         }
     }
 
-    public void setKing() {
-        if (this.name == "MUFASA") {
-            isKing = true;
-        } else {
-            isKing = false;
-        }
-    }
-
-    public boolean getKing() {
+    public boolean getIsKing() {
         return isKing;
     }
 
-    public void setBad() {
-        if (this.name == "Scar") {
-            isBad = true;
-        } else {
-            isBad = false;
-        }
+    public boolean getIsBad() {
+        return isBad;
     }
 
-    public boolean getBad() {
-        return isBad;
+    public void setIsKing(boolean king) {
+        isKing = king;
+    }
+
+    public void setIsBad(boolean bad) {
+        isBad = bad;
     }
 
     public void setName(String name) {

@@ -7,17 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 @Controller
 public class BankAccountController {
 
-    BankAccount simbasAccount = new BankAccount("Simba", 2000, "lion");
+    BankAccount simbasAccount = new BankAccount("Simba", 2000, "lion", false, false);
 
     @Autowired
     Bank bank;
-
-//    ArrayList<BankAccount> accounts;
 
     @RequestMapping(value = "/simbassccount")
     public String account(Model model) {

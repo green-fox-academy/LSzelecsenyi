@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:color="http://java.sun.com/xml/ns/persistence/orm">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:color="http://java.sun.com/xml/ns/persistence/orm"
+      xmlns:text-align="http://www.w3.org/1999/xhtml">
 <head>
     <title>Thymeleaf Exercise #</title>
     <link rel="stylesheet" th:href="@{style.css}" />
@@ -7,34 +8,36 @@
 </head>
 <body>
 <table>
-    <tr>
+    <tr class="header">
         <th width="80">Index</th>
         <th width="250">Accountholder</th>
         <th width="150">Balance</th>
-        <th width="150">Species</th>
-        <th width="150">Good/Bad</th>
+        <th width="100">Species</th>
+        <th width="80">King/Servant</th>
+        <th width="80">Good/Bad</th>
         <th width="170">Donate</th>
     </tr>
-    <tr th:each="account : ${accounts}" th:style="${account.getKing()} ? 'color:red'" >
-        <td th:text="${accountStat.index}"></td>
-        <td  th:text="${account.name}"></td>
-        <td class="thirdcol" th:text="${#numbers.formatDecimal(account.balance, 1, 2, 'POINT')}"></td>
-        <td th:text="${account.animalType}"></td>
-        <td th:text="${account.getBad()} ? 'bad guy' : 'good one'"></td>
+    <tr th:each="account : ${accounts}" th:style="${account.getIsKing()} ? 'color:red'" >
+        <td class="firstcol" th:text="${accountStat.index}"></td>
+        <td th:text="${account.name}"></td>
+        <td class="thirdcol" th:text="${#numbers.formatDecimal(account.getBalance(), 1, 2, 'POINT')}"></td>
+        <td th:text="${account.getAnimalType()}"></td>
+        <td th:text="${account.getIsKing()} ? 'King' : 'Servant'"></td>
+        <td th:text="${account.getIsBad()} ? 'bad guy' : 'good one'"></td>
         <td> <form th:action="@{/accounts}" method="post">
-        <input name="name" type="hidden" th:value="${account.name}" />
+        <input name="name" type="hidden" th:value="${account.getName()}" />
         <button type="submit" th:text="'Donate'"></button>
     </form></td>
     </tr>
     <tr>
         <form th:action="@{/addaccount}" th:object="${addaccount}" method="post">
             <th></th>
-            <th><input type="text" th:field="*{name}" placeholder="Accountholder's name"/></th>
-            <th><input type="number" th:field="*{balance}" placeholder="1 or more"/></th>
-            <th><input type="text" th:field="*{animalType}" placeholder="Species"/></th>
-            <th></th>
+            <th><input type="text" th:field="*{name}" placeholder="Accountholder's name" style="text-align: center"/></th>
+            <th><input type="number" th:field="*{balance}" placeholder="1 or more" style="text-align: right"/></th>
+            <th><input type="text" th:field="*{animalType}" placeholder="Species" style="text-align: center"/></th>
+            <th>King?<input type="checkbox" th:field="*{isKing}"/></th>
+            <th>Bad?<input type="checkbox" th:field="*{isBad}"/></th>
             <th><input type="submit" value="Add account"/></th>
-
         </form>
     </tr>
 </table>
