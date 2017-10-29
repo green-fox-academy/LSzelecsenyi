@@ -48,9 +48,6 @@ public class BankAccountController {
     @PostMapping("/addaccount")
     public String addAccount(@ModelAttribute BankAccount account) {
         bank.addAccount(account);
-        System.out.println(account.getName());
-        System.out.println(account.getBalance());
-        System.out.println(account.getAnimalType());
         return "redirect:/accounts";
     }
 

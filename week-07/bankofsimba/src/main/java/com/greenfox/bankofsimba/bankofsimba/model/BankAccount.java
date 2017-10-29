@@ -16,9 +16,9 @@ public class BankAccount {
         this.name = name;
         this.balance = balance;
         this.animalType = animalType;
-        currency = "Zebra";
-        isKing = false;
-        isBad = false;
+        currency = "Cobble";
+//        isKing = false;
+//        isBad = false;
         setKing();
         setBad();
     }
@@ -34,6 +34,8 @@ public class BankAccount {
     public void setKing() {
         if (this.name == "MUFASA") {
             isKing = true;
+        } else {
+            isKing = false;
         }
     }
 
@@ -44,6 +46,8 @@ public class BankAccount {
     public void setBad() {
         if (this.name == "Scar") {
             isBad = true;
+        } else {
+            isBad = false;
         }
     }
 

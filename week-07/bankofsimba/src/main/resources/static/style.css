@@ -57,7 +57,7 @@ button, input[type=submit] {
     font-size: 20px;
 }
 
-input[type=text], input[type=Integer] {
+input[type=text], input[type=number] {
     padding:5px;
     border:2px solid #ccc;
     -webkit-border-radius: 5px;
