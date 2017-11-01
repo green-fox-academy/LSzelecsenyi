@@ -45,27 +45,17 @@ public class TodoController {
         return  new ModelAndView("redirect:/todo/list");
     }
 
-    @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
-    public String edit(@PathVariable long id,
-                       Model model) {
+    @GetMapping("/list/{id}/edit")
+    public String edit(@PathVariable long id, Model model) {
         Todo todo = todoRepository.findOne(id);
         model.addAttribute("todo", todo);
         return "edit";
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView update(@RequestParam("title") String title,
-                               @RequestParam("todoId") long id,
-                               @RequestParam(value = "isUrgent", defaultValue = "false") boolean isUrgent,
-                               @RequestParam(value = "isDone", defaultValue = "false") boolean isDone) {
-        Todo todo = todoRepository.findOne(id);
-        todo.setTitle(title);
-        todo.setIsUrgent(isUrgent);
-        todo.setIsDone(isDone);
+    @PostMapping("/list/{id}/edit")
+    public String edit(@ModelAttribute Todo todo) {
         todoRepository.save(todo);
-        System.out.println(todo.getId());
-        System.out.println(todo.getTitle());
-        return new ModelAndView("redirect:/todo/list");
+        return "redirect:/todo";
     }
 
 
