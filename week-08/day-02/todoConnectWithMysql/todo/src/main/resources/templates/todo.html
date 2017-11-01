@@ -5,41 +5,42 @@
     <title>Todos</title>
 </head>
 <body>
-<table class="todolist">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Action</th>
-            <th>Done</th>
-            <th>Urgent</th>
-            <th>Delete</th>
-            <th>Edit</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="todo : ${todos}">
-            <td th:text="${todo.getId()}"></td>
-            <td th:text="${todo.getTitle()}"></td>
-            <td th:text="${todo.getIsDone()} ? 'done' : '!done'"></td>
-            <td th:text="${todo.getIsUrgent()} ? 'urgent' : '!urgent'"></td>
-            <td>
-                <a th:href="@{'/list/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">
-                    delete
-                    <!--<span class="fa-stack">
-                            <i class="glyphicon glyphicon-trash"></i>
+    <a class="btn btn-primary" href="/new">Add new todo</a>
+    <table class="todolist">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Action</th>
+                <th>Done</th>
+                <th>Urgent</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.getId()}"></td>
+                <td th:text="${todo.getTitle()}"></td>
+                <td th:text="${todo.getIsDone()} ? 'done' : '!done'"></td>
+                <td th:text="${todo.getIsUrgent()} ? 'urgent' : '!urgent'"></td>
+                <td>
+                    <a th:href="@{'/list/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">
+                        delete
+                        <!--<span class="fa-stack">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </span>-->
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/todos/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">
+                        edit<!--<span class="fa-stack">
+                            <i class="glyphicon glyphicon-edit"></i>
                         </span>-->
-                </a>
-            </td>
-            <td>
-                <a th:href="@{'/todos/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">
-                    edit<!--<span class="fa-stack">
-                        <i class="glyphicon glyphicon-edit"></i>
-                    </span>-->
-                </a>
-            </td>
+                    </a>
+                </td>
 
-        </tr>
-    </tbody>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>

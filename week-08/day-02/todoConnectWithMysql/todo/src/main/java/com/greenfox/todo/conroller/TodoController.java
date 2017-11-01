@@ -30,6 +30,20 @@ public class TodoController {
         return "todo";
     }
 
+    @RequestMapping(value =  "/new", method = RequestMethod.GET)
+    public String newTodo() {
+        return "add";
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ModelAndView create(@RequestParam("title") String comment) {
+        todoRepository.save(new Todo(comment));
+        return new ModelAndView("redirect:/posts");
+    }
+
+
+
+
     @RequestMapping(value = "/list/{id}/delete", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable long id) {
         todoRepository.delete(id);
