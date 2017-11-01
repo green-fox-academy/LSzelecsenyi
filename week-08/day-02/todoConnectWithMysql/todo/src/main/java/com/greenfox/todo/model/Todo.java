@@ -31,4 +31,32 @@ public class Todo {
     public String getTitle() {
         return title;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public boolean getIsUrgent() {
+        return isUrgent;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setIsUrgent(boolean urgent) {
+        isUrgent = urgent;
+    }
+
+    public void setIsDone(boolean done) {
+        isDone = done;
+    }
 }
