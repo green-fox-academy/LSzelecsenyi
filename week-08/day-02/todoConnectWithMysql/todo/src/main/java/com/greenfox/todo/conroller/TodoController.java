@@ -27,15 +27,16 @@ public class TodoController {
         return "todo";
     }
 
-    @RequestMapping(value =  "/new", method = RequestMethod.GET)
-    public String newTodo() {
+    @GetMapping("/list/addnewtodo")
+    public String newTodo(Model model) {
+        model.addAttribute("newTodo", new Todo());
         return "add";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@RequestParam("title") String comment) {
-        todoRepository.save(new Todo(comment));
-        return new ModelAndView("redirect:/todo/");
+    @PostMapping(value = "/list/create")
+    public String create(@ModelAttribute Todo todo) {
+        todoRepository.save(todo);
+        return "redirect:/todo/";
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
@@ -54,9 +55,13 @@ public class TodoController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView update(@RequestParam("title") String title,
-                               @RequestParam("todoId") long id) {
+                               @RequestParam("todoId") long id,
+                               @RequestParam(value = "isUrgent", defaultValue = "false") boolean isUrgent,
+                               @RequestParam(value = "isDone", defaultValue = "false") boolean isDone) {
         Todo todo = todoRepository.findOne(id);
         todo.setTitle(title);
+        todo.setIsUrgent(isUrgent);
+        todo.setIsDone(isDone);
         todoRepository.save(todo);
         System.out.println(todo.getId());
         System.out.println(todo.getTitle());
