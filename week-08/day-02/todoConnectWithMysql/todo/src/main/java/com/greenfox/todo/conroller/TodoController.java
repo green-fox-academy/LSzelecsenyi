@@ -16,7 +16,6 @@ public class TodoController {
 
     @Autowired
     private TodoRepository todoRepository;
-    Todo todo;
 
     @RequestMapping
     public String todo(Model model) {
@@ -40,9 +39,6 @@ public class TodoController {
         todoRepository.save(new Todo(comment));
         return new ModelAndView("redirect:/posts");
     }
-
-
-
 
     @RequestMapping(value = "/list/{id}/delete", method = RequestMethod.GET)
     public ModelAndView delete(@PathVariable long id) {
