@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <h2>Add new Todo</h2>
     <div>
-        <form method="post" th:action="@{/create}" th:object="${title}">
+        <form method="post" th:action="@{/todo/create}" th:object="${title}">
             <div class="todo-group">
                 <label for="title"></label>
                 <textarea rows="3" class="todo-control" id="title" name="title"/>

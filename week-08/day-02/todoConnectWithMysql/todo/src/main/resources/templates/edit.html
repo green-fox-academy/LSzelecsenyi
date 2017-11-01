@@ -1,6 +1,14 @@
-<html layout:decorator="layout">
-    <div layout:fragment="content">
-        <form method="post" name="todo_form" id="todo_form" action="/todo/update" role="form">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div>
+        <form method="post" name="comment_form" id="comment_form" action="/todo/update" role="form">
+            <div class="todo-group">
+                <label for="title"></label>
+                <textarea rows="3" width="400px" class="todo-control" id="title" name="title" th:text="${todo.title}"></textarea>
+                <input type="hidden" th:value="${todo.id}" id="todoId" class="todo-control" name="todoId"/>
+            </div>
+            <p><input type="checkbox" th:field="*{todo.isUrgent}" th:text="'Check if todo is urgent'"/></p>
+            <p><input type="checkbox" th:field="*{todo.isDone}" th:text="'Check if todo is alerady done'"/></p>
+            <p><input type="submit" value="Update todo" /> <input type="reset" value="Reset changes" /></p>
         </form>
     </div>
 </html>

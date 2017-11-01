@@ -5,7 +5,7 @@
     <title>Todos</title>
 </head>
 <body>
-    <a class="btn btn-primary" href="/new">Add new todo</a>
+    <a class="btn btn-primary" href="/todo/new">Add new todo</a>
     <table class="todolist">
         <thead>
             <tr>
@@ -21,10 +21,10 @@
             <tr th:each="todo : ${todos}">
                 <td th:text="${todo.getId()}"></td>
                 <td th:text="${todo.getTitle()}"></td>
-                <td th:text="${todo.getIsDone()} ? 'done' : '!done'"></td>
-                <td th:text="${todo.getIsUrgent()} ? 'urgent' : '!urgent'"></td>
+                <td th:text="${todo.getIsDone()} ? 'done' : 'active'"></td>
+                <td th:text="${todo.getIsUrgent()} ? 'urgent' : 'not urgent'"></td>
                 <td>
-                    <a th:href="@{'/list/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">
+                    <a th:href="@{'/todo/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">
                         delete
                         <!--<span class="fa-stack">
                                 <i class="glyphicon glyphicon-trash"></i>
@@ -32,7 +32,7 @@
                     </a>
                 </td>
                 <td>
-                    <a th:href="@{'/todos/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">
+                    <a th:href="@{'/todo/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">
                         edit<!--<span class="fa-stack">
                             <i class="glyphicon glyphicon-edit"></i>
                         </span>-->
