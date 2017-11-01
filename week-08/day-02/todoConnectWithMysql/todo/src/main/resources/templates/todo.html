@@ -5,16 +5,19 @@
     <title>Todos</title>
 </head>
 <body>
-    <a class="btn btn-primary" href="/todo/list/addnewtodo">Add new todo</a>
+    <form action="/todo/list/addnewtodo">
+        <input type="submit" value="Add new todo" />
+    </form>
     <table class="todolist">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Action</th>
-                <th>Done</th>
-                <th>Urgent</th>
-                <th>Delete</th>
-                <th>Edit</th>
+            <tr align="left">
+                <th width="40px">Id</th>
+                <th width="150px">Action</th>
+                <th width="70px">Done</th>
+                <th width="70px">Urgent</th>
+                <th width="100px">Created</th>
+                <th width="50px">Delete</th>
+                <th width="50px">Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -23,20 +26,10 @@
                 <td th:text="${todo.getTitle()}"></td>
                 <td th:text="${todo.getIsDone()} ? 'done' : 'active'"></td>
                 <td th:text="${todo.getIsUrgent()} ? 'urgent' : 'not urgent'"></td>
-                <td>
-                    <a th:href="@{'/todo/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">
-                        delete
-                        <!--<span class="fa-stack">
-                                <i class="glyphicon glyphicon-trash"></i>
-                            </span>-->
-                    </a>
+                <td><a th:href="@{'/todo/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">delete</a>
                 </td>
                 <td>
-                    <a th:href="@{'/todo/list/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">
-                        edit<!--<span class="fa-stack">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </span>-->
-                    </a>
+                    <a th:href="@{'/todo/list/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">edit</a>
                 </td>
 
             </tr>
