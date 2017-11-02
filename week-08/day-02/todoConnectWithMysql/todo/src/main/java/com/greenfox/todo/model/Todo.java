@@ -1,9 +1,8 @@
 package com.greenfox.todo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Todo {
@@ -14,18 +13,27 @@ public class Todo {
     private String title;
     private boolean isUrgent;
     private boolean isDone;
+    private LocalDate created;
+    private LocalDate dueDate;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Assignee_id")
+    private Assignee assignee;
 
     public Todo() {
     }
 
     public Todo(String title) {
         this.title = title;
+
     }
 
     public Todo(String title, boolean isUrgent, boolean isDone) {
         this.title = title;
         this.isDone = isDone;
         this.isUrgent = isUrgent;
+        created = LocalDate.now();
+        dueDate = LocalDate.now().plusDays(3);
     }
 
     public String getTitle() {
@@ -58,5 +66,45 @@ public class Todo {
 
     public void setIsDone(boolean done) {
         isDone = done;
+    }
+
+    public boolean isUrgent() {
+        return isUrgent;
+    }
+
+    public void setUrgent(boolean urgent) {
+        isUrgent = urgent;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
     }
 }

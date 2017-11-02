@@ -1,6 +1,7 @@
 package com.greenfox.todo.conroller;
 
 import com.greenfox.todo.model.Todo;
+import com.greenfox.todo.repository.AssigneeRepository;
 import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,12 +9,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/todo")
 public class TodoController {
 
     @Autowired
     private TodoRepository todoRepository;
+    private AssigneeRepository assigneeRepository;
 
     @RequestMapping
     public String todo(Model model) {
@@ -30,7 +34,7 @@ public class TodoController {
     @GetMapping("/list/addnewtodo")
     public String newTodo(Model model) {
         model.addAttribute("newTodo", new Todo());
-        return "add";
+        return "addtodo";
     }
 
     @PostMapping(value = "/list/create")
@@ -49,7 +53,7 @@ public class TodoController {
     public String edit(@PathVariable long id, Model model) {
         Todo todo = todoRepository.findOne(id);
         model.addAttribute("todo", todo);
-        return "edit";
+        return "edittodo";
     }
 
     @PostMapping("/list/{id}/edit")
@@ -58,5 +62,46 @@ public class TodoController {
         return "redirect:/todo";
     }
 
+    @GetMapping("/assignees")
+    public String listAssignees(Model model) {
+        model.addAttribute("assignees", assigneeRepository.findAll());
+        return "assignees";
+    }
+
+    @GetMapping("/actives")
+    public String listActive(Model model) {
+        List actives = todoRepository.findAllByIsDone(false);
+        model.addAttribute("actives", actives);
+        return "actives";
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

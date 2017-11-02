@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Assignees</title>
+</head>
+<body>
+<form action="/todo/list/addassignee">
+    <input type="submit" value="Add Assignee" />
+</form>
+<form action="/todo/list/">
+    <input type="submit" value="Back to Todo List" />
+</form>
+<table class="assignees">
+    <thead>
+    <tr align="left">
+        <th width="40px">Id</th>
+        <th width="150px">Name</th>
+        <th width="70px">Email</th>
+        <th width="70px">Delete</th>
+        <th width="70px">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="assignee : ${assignees}">
+        <td th:text="${assignee.getId()}"></td>
+        <td th:text="${assignee.getName()}"></td>
+        <td th:text="${todo.getEmail()}"></td>
+        <td><a th:href="@{'/todo/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/todo/list/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">edit</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

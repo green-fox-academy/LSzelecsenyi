@@ -1,6 +1,8 @@
 package com.greenfox.todo;
 
+import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.model.Todo;
+import com.greenfox.todo.repository.AssigneeRepository;
 import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +14,8 @@ public class TodoApplication implements CommandLineRunner{
 
 	@Autowired
 	TodoRepository todoRepository;
+	@Autowired
+	AssigneeRepository assigneeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodoApplication.class, args);
@@ -25,5 +29,7 @@ public class TodoApplication implements CommandLineRunner{
 		todoRepository.save(new Todo("Ride bike", true, false));
 		todoRepository.save(new Todo("Drink beer", true, false));
 		todoRepository.save(new Todo("Code a bit", true, false));
+		assigneeRepository.save(new Assignee("Mikorka Kalman", "mikorkakalmangmail.com"));
+		assigneeRepository.save(new Assignee("Metal Ica", "metallicamail.com"));
 	}
 }
