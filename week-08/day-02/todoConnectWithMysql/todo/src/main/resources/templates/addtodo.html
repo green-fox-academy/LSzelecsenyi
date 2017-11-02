@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="align-center" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="UTF-8"/>
     <title>Add new todo</title>
 </head>
 <body>
-    <p><a th:href="@{/todo/list}">Back to Todo List</a></p>
+    <h3>ADD NEW TODO</h3>
     <form action="/todo/list/create" th:object="${newTodo}" method="post">
         <p><input type="hidden" th:field="*{id}"/></p>
-        <p><input type="text" th:field="*{title}"/></p>
+        <p><input type="text" th:field="*{title}" placeholder="Todo's title"/></p>
         <p><input type="checkbox" th:field="*{isUrgent}"/>Check if todo is urgent</p>
         <p><button type="submit" value="Submit" th:text="'Add New Todo'"></button></p>
+    </form>
+    <form action="/todo/list">
+        <input type="submit" value="Back > Todo List" />
     </form>
 </body>
 </html>

@@ -44,7 +44,7 @@ public class TodoController {
         return "redirect:/todo/";
     }
 
-    @GetMapping("/{id}/delete")
+    @DeleteMapping("/{id}/delete")
     public ModelAndView delete(@PathVariable long id) {
         todoRepository.delete(id);
         return  new ModelAndView("redirect:/todo/list");

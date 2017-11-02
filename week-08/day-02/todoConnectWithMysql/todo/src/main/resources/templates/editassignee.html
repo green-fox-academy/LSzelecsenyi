@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html class="align-center" lang="en" xmlns:th="http://www.thymeleaf.com">
 <head>
+    <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="UTF-8"/>
     <title>Edit Assignee</title>
 </head>
 <body>
-<p><a th:href="@{/todo/list}">Back to Todo List</a></p>
 <form th:action="@{'/assignees/{id}/edit'(id=${assignee.id})}" th:object="${assignee}" method="post">
     <p><input type="hidden" th:field="*{id}"/></p>
     <p><input type="text" th:field="*{name}" id="name" name="name"/></p>
@@ -13,6 +13,12 @@
     <p><button type="submit" value="Submit">Update Assignee</button></p>
     <p><a th:href="@{'/assignees/{id}/delete'(id=${assignee.id})}" class="delete" th:attr="name=${assignee.name}">delete</a></p>
     <a th:href="@{'/assignees/{id}/edit'(id=${assignee.id})}" class="edit" th:attr="name=${assignee.name}">edit</a>
+    </form>
+    <form action="/todo/list">
+        <input type="submit" value="Back > Todo List" />
+    </form>
+    <form action="/assignees/">
+        <input type="submit" value="Back > Assignees" />
     </form>
 </body>
 </html>

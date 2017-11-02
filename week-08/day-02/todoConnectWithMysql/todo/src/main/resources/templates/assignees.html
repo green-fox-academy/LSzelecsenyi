@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http:thymleleaf.com">
 <head>
+    <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="UTF-8"/>
     <title>Assignees</title>
 </head>
 <body>
-<form action="assignees/addnewassignee">
-    <input type="submit" value="Add Assignee" />
-</form>
-<form action="/todo/list/">
-    <input type="submit" value="Back to Todo List" />
-</form>
-<table class="assignees">
-    <thead>
-    <tr align="left">
-        <th width="40px">Id</th>
-        <th width="150px">Name</th>
-        <th width="70px">Email</th>
-        <th width="70px">Delete</th>
-        <th width="70px">Edit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="assignee : ${assignees}">
-        <td th:text="${assignee.getId()}"></td>
-        <td th:text="${assignee.getName()}"></td>
-        <td th:text="${assignee.getEmail()}"></td>
-        <td><form th:action="@{'/assignees/{id}/delete'(id=${assignee.id})}" th:method="delete" >
-            <button type="submit"> Delete </button>
-        </form>
-        </td>
-        <td>
-            <form th:action="@{'/assignees/{id}/edit'(id=${assignee.id})}">
-                <button type="submit"> Edit </button>
-            </form>
-        </td>
+    <h3>ASSIGNEES</h3>
+    <form action="assignees/addnewassignee">
+        <input type="submit" value="Add Assignee" />
+    </form>
+    <form action="/todo/list/">
+        <input type="submit" value="Back to Todo List" />
+    </form>
+    <table class="assignees">
+        <thead>
+            <tr align="left">
+                <th width="40px">Id</th>
+                <th width="150px">Name</th>
+                <th width="70px">Email</th>
+                <th width="70px">Delete</th>
+                <th width="70px">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="assignee : ${assignees}">
+                <td th:text="${assignee.getId()}"></td>
+                <td th:text="${assignee.getName()}"></td>
+                <td th:text="${assignee.getEmail()}"></td>
+                <td><form th:action="@{'/assignees/{id}/delete'(id=${assignee.id})}" th:method="delete" >
+                    <button type="submit"> Delete </button>
+                </form>
+                </td>
+                <td>
+                    <form th:action="@{'/assignees/{id}/edit'(id=${assignee.id})}">
+                        <button type="submit"> Edit </button>
+                    </form>
+                </td>
 
-    </tr>
-    </tbody>
-</table>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
