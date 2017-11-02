@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Todos Created At </title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr align="left">
+        <th width="40px">Id</th>
+        <th width="150px">Todo</th>
+        <th width="70px">Done</th>
+        <th width="70px">Urgent</th>
+        <th width="70px">Crated</th>
+        <th width="70px">Due</th>
+        <th width="50px">Delete</th>
+        <th width="50px">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${listByDate}">
+        <td th:text="${todo.getId()}"></td>
+        <td th:text="${todo.getTitle()}"></td>
+        <td th:text="${todo.getIsDone()} ? 'done' : 'active'"></td>
+        <td th:text="${todo.getIsUrgent()} ? 'urgent' : 'not urgent'"></td>
+        <td th:text="${todo.getCreated()}"></td>
+        <td th:text="${todo.getDueDate()}"></td>
+        <td><a th:href="@{'/todo/{id}/delete'(id=${todo.id})}" class="delete" th:attr="name=${todo.title}">delete</a>
+        </td>
+        <td>
+            <a th:href="@{'/todo/list/{id}/edit'(id=${todo.id})}" class="edit" th:attr="name=${todo.title}">edit</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

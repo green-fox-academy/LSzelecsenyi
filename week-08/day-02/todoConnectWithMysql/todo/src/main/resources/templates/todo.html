@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.com" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Todos</title>
@@ -7,16 +7,20 @@
 <body>
     <h1>Todo List</h1>
     <p></p>
-    <p><form action="/todo/list/assignees">
+    <form action="/todo/assignees">
         <input type="submit" value="Assignees" />
-    </form></p>
-    <p><form action="/todo/actives">
+    </form>
+    <form action="/todo/actives">
         <input type="submit" value="Show Active Todos" />
-    </form></p>
-    <p></p>
-    <p><form>
-
-    </form></p>
+    </form>
+    <form th:action="@{/todo/bydate/}">
+        <input type="date" name="date"/>
+        <button type="submit" value="Submit">Search By Date</button>
+    </form>
+    <form th:action="@{/todo/bytitle/}">
+        <input type="text" name="title"/>
+        <button type="submit" value="Submit">Search By Title</button>
+    </form>
     <table class="todolist">
         <thead>
             <tr align="left">
@@ -47,6 +51,7 @@
             </tr>
         </tbody>
     </table>
+    <p></p>
     <form action="/todo/list/addnewtodo">
         <input type="submit" value="Add New todo" />
     </form>

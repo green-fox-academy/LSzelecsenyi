@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class todoService {
+public class TodoService {
 
     @Autowired
     TodoRepository todoRepository;

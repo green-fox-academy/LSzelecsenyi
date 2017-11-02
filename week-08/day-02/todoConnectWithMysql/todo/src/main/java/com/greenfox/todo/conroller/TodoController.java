@@ -1,14 +1,16 @@
 package com.greenfox.todo.conroller;
 
 import com.greenfox.todo.model.Todo;
-import com.greenfox.todo.repository.AssigneeRepository;
 import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -17,7 +19,6 @@ public class TodoController {
 
     @Autowired
     private TodoRepository todoRepository;
-    private AssigneeRepository assigneeRepository;
 
     @RequestMapping
     public String todo(Model model) {
@@ -62,17 +63,34 @@ public class TodoController {
         return "redirect:/todo";
     }
 
-    @GetMapping("/assignees")
-    public String listAssignees(Model model) {
-        model.addAttribute("assignees", assigneeRepository.findAll());
-        return "assignees";
-    }
-
     @GetMapping("/actives")
     public String listActive(Model model) {
         List actives = todoRepository.findAllByIsDone(false);
         model.addAttribute("actives", actives);
         return "actives";
+    }
+
+//    @GetMapping("/actives")
+//    public String listActiveOnSameSite(@RequestParam boolean isDone) {
+//        List actives = todoRepository.findAllByIsDone(false);
+//        model.addAttribute("actives", actives);
+//        return "todo";
+//    }
+
+    @GetMapping("/bydate")
+    public String findByDate(Model model, @RequestParam String date) {
+        final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final LocalDate formattedDate = LocalDate.parse(date);
+        List listByDate = todoRepository.findAllByCreated(formattedDate);
+        model.addAttribute("listByDate", listByDate);
+        return "bydate";
+    }
+
+    @GetMapping("/bytitle")
+    public String findByTitle(Model model, String title) {
+        List byTitle = todoRepository.findAllByTitle(title);
+        model.addAttribute("byTitle", byTitle);
+        return "bytitle";
     }
 
 

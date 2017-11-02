@@ -1,5 +1,7 @@
 package com.greenfox.todo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,7 +27,12 @@ public class Todo {
 
     public Todo(String title) {
         this.title = title;
+    }
 
+    public Todo(String title, LocalDate created, LocalDate dueDate) {
+        this.title = title;
+        this.created = created;
+        this.dueDate = dueDate;
     }
 
     public Todo(String title, boolean isUrgent, boolean isDone) {
