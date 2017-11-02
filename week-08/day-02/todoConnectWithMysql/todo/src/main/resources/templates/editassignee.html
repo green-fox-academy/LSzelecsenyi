@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Assignee</title>
+</head>
+<body>
+<p><a th:href="@{/todo/list}">Back to Todo List</a></p>
+<form th:action="@{'/assignees/{id}/edit'(id=${assignee.id})}" th:object="${assignee}" method="post">
+    <p><input type="hidden" th:field="*{id}"/></p>
+    <p><input type="text" th:field="*{name}" id="name" name="name"/></p>
+    <p><input type="text" th:field="*{email}" id="email" name="email"/></p>
+    <p><button type="submit" value="Submit">Update Assignee</button></p>
+    <p><a th:href="@{'/assignees/{id}/delete'(id=${assignee.id})}" class="delete" th:attr="name=${assignee.name}">delete</a></p>
+    <a th:href="@{'/assignees/{id}/edit'(id=${assignee.id})}" class="edit" th:attr="name=${assignee.name}">edit</a>
+    </form>
+</body>
+</html>

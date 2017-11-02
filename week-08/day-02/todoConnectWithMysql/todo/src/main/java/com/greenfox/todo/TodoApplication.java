@@ -15,7 +15,7 @@ public class TodoApplication implements CommandLineRunner{
 	@Autowired
 	TodoRepository todoRepository;
 	@Autowired
-	AssigneeRepository assigneeRepository;
+    AssigneeRepository assigneeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TodoApplication.class, args);
@@ -29,7 +29,7 @@ public class TodoApplication implements CommandLineRunner{
 		todoRepository.save(new Todo("Ride bike", true, false));
 		todoRepository.save(new Todo("Drink beer", true, false));
 		todoRepository.save(new Todo("Code a bit", true, false));
-		assigneeRepository.save(new Assignee("Mikorka Kalman", "mikorkakalmangmail.com"));
-		assigneeRepository.save(new Assignee("Metal Ica", "metallicamail.com"));
+		assigneeRepository.save(new Assignee("Mikorka Kalman", "mikorkakalman@gmail.com"));
+		assigneeRepository.save(new Assignee("Metal Ica", "metallica@gmail.com"));
 	}
 }

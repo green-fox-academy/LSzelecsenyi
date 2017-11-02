@@ -1,7 +1,5 @@
 package com.greenfox.todo.model;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
