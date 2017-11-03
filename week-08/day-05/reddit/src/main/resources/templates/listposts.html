@@ -21,7 +21,7 @@
         <tbody>
             <tr th:each="post : ${posts}">
                 <td th:text="${post.getScore()}"></td>
-                <td></td>
+                <td><a th:href="'reddit/' + ${post.id} + '/upvote'">+</a><a th:href="'reddit/' + ${post.id} + '/downvote'">-</a></td>
                 <td th:text="${post.getPost()}"></td>
             </tr>
         </tbody>
