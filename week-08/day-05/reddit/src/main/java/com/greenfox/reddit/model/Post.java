@@ -10,7 +10,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String post;
     private int score;
 
@@ -19,11 +19,16 @@ public class Post {
         this.score = score;
     }
 
+    public Post(String post) {
+        this.post = post;
+        score = 0;
+    }
+
     public Post() {
 
     }
 
-    public long getId() {
+    public Long getId() {
 
         return id;
     }
