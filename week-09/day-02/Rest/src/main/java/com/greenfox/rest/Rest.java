@@ -2,9 +2,8 @@ package com.greenfox.rest;
 
 import com.greenfox.rest.Controller.DoublingError;
 import com.greenfox.rest.Controller.ErrorText;
-import com.greenfox.rest.model.Append;
-import com.greenfox.rest.model.Doub;
-import com.greenfox.rest.model.Greet;
+import com.greenfox.rest.model.*;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +29,27 @@ public class Rest {
         return append;
     }
 
+    @PostMapping("/dountil/{what}")
+    public Result doUntil(@PathVariable("what") String what, @RequestBody DoUntil doUntil) {
+        Result result = new Result();
+        int until = doUntil.getUntil();
+        if (what.equals("sum")) {
+            int sum = 0;
+            for (int i = 1; i <= until; i++) {
+                sum += i;
+                result.setResult(sum);
+            }
+        } else if (what.equals("factor")) {
+            int factor = 1;
+            for (int i = 1; i <= until; i++) {
+                factor = factor * i;
+                result.setResult(factor);
+            }
+        }
+        return result;
+    }
+
+
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ErrorText paramError(MissingServletRequestParameterException missingParam) {
         ErrorText errorText = new ErrorText();
@@ -40,6 +60,13 @@ public class Rest {
         } else if (missingParam.getParameterName().equals("name")) {
             errorText.setError("Please provide a name!");
         }
+        return errorText;
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ErrorText missingNumber() {
+        ErrorText errorText = new ErrorText();
+        errorText.setError("Please provide a number!");
         return errorText;
     }
 
