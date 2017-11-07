@@ -2,13 +2,11 @@ package com.greenfox.rest;
 
 import com.greenfox.rest.Controller.DoublingError;
 import com.greenfox.rest.Controller.ErrorText;
+import com.greenfox.rest.model.Append;
 import com.greenfox.rest.model.Doub;
 import com.greenfox.rest.model.Greet;
 import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Rest {
@@ -24,6 +22,12 @@ public class Rest {
                        @RequestParam("title") String title) {
         Greet greet = new Greet(name, title);
         return greet;
+    }
+
+    @RequestMapping("/appenda/{appendable}")
+    public Append append(@PathVariable("appendable") String str) {
+        Append append = new Append(str);
+        return append;
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
