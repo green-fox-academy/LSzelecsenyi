@@ -2,14 +2,14 @@ package com.greenfox.rest.model;
 
 public class DoUntil {
 
-    private int until;
+    private int doUntil;
 
     public int getUntil() {
-        return until;
+        return doUntil;
     }
 
     public void setUntil(int until) {
-        this.until = until;
+        this.doUntil = until;
     }
 
     public DoUntil() {
@@ -17,6 +17,6 @@ public class DoUntil {
 
     public DoUntil(int until) {
 
-        this.until = until;
+        this.doUntil = until;
     }
 }
