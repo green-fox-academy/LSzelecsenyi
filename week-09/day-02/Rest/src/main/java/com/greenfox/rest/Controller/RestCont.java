@@ -6,7 +6,7 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class Rest {
+public class RestCont {
 
     @RequestMapping("/doubling")
     public Doub doubling(@RequestParam("input") Integer number) {
@@ -47,16 +47,16 @@ public class Rest {
         return result;
     }
 
-    @PostMapping("/arrays/{what}")
-    public ResultNumber workWithTheArray(@PathVariable("what") String what, @RequestBody NumberArray numberArray) {
-        ResultNumber resultNumber = new ResultNumber();
-        if (what.equals("sum")) {
-            for (int i = 0; i < NumberArray.getNumbers.length(); i++) {
-                numberArray.getNumbers()[i]
-            }
-        }
-        return resultNumber;
-    }
+//    @PostMapping("/arrays/{what}")
+//    public ResultNumber workWithTheArray(@PathVariable("what") String what, @RequestBody NumberArray numberArray) {
+//        ResultNumber resultNumber = new ResultNumber();
+//        if (what.equals("sum")) {
+//            for (int i = 0; i < NumberArray.getNumbers.length(); i++) {
+//                numberArray.getNumbers()[i]
+//            }
+//        }
+//        return resultNumber;
+//    }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ErrorText paramError(MissingServletRequestParameterException missingParam) {
