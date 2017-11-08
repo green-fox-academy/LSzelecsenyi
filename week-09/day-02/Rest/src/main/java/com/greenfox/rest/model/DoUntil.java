@@ -15,6 +15,14 @@ public class DoUntil {
     public DoUntil() {
     }
 
+    public int getDoUntil() {
+        return doUntil;
+    }
+
+    public void setDoUntil(int doUntil) {
+        this.doUntil = doUntil;
+    }
+
     public DoUntil(int until) {
 
         this.doUntil = until;

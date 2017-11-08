@@ -14,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -86,6 +87,44 @@ public class RestTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("error", is("Please provide a title!")));
+    }
+
+    @Test
+    public void testDoUntilFactor() throws Exception {
+        mockMvc.perform(post("/dountil/factor")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"doUntil\" : 5}"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.result", is(120)));
+    }
+
+    @Test
+    public void testDountilSum() throws Exception {
+        mockMvc.perform(post("/dountil/sum")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"doUntil\": 5}"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.result", is(15)));
+    }
+
+    @Test
+    public void testDountilNoUntilProvided() throws Exception {
+        mockMvc.perform(post("/dountil/sum")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("error", is("Please provide a number!")));
+    }
+
+    @Test
+    public void testDountilNoWhatProvided() throws Exception {
+        mockMvc.perform(post("/dountil")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"doUntil\": 5}"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().contentType(contentType));
     }
 
 }
