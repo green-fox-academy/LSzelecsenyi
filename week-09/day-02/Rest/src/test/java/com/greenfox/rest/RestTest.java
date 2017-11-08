@@ -64,4 +64,28 @@ public class RestTest {
                 .andExpect(jsonPath("error", is("Please provide an input!")));
     }
 
+    @Test
+    public void testGreet() throws Exception {
+        mockMvc.perform(get("/greeter?name=mikorkakalman&title=szerencsecsomag"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("$.welcome_message", is("Oh, hi there mikorkakalman, my dear szerencsecsomag!")));
+    }
+
+    @Test
+    public void testGreetNoNameProvided() throws Exception {
+        mockMvc.perform(get("/greeter?title=szerencsecsomag"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("error", is("Please provide a name!")));
+    }
+
+    @Test
+    public void testGreetNoTitleProvided() throws Exception {
+        mockMvc.perform(get("/greeter?name=mikorkakalman"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(contentType))
+                .andExpect(jsonPath("error", is("Please provide a title!")));
+    }
+
 }
