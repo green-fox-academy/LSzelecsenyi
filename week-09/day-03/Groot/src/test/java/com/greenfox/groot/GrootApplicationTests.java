@@ -62,8 +62,31 @@ public class GrootApplicationTests {
 	}
 
 	@Test
-	public void firsGrootTest404() throws Exception {
+	public void grootTest404() throws Exception {
 		mockMvc.perform(get("/groot/blabla"))
+				.andExpect(status().is4xxClientError());
+	}
+
+	@Test
+	public void yonduTestEverythingGiven() throws Exception {
+		mockMvc.perform(get("/yondu?distance=100.0&time=10.0"))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(contentType))
+				.andExpect(jsonPath("$.distance", is(100.0d)))
+				.andExpect(jsonPath("$.time", is(10.0d)))
+				.andExpect(jsonPath("$.speed", is(10.0d)));
+	}
+
+	@Test
+	public void yonduTestSomethingsMissing() throws Exception {
+		mockMvc.perform(get("/yondu"))
+				.andExpect(content().contentType(contentType))
+				.andExpect(jsonPath("error", is("ERROR!!!44!44!!!")));
+	}
+
+	@Test
+	public void yonduTest404() throws Exception {
+		mockMvc.perform(get("/yondu/blabla"))
 				.andExpect(status().is4xxClientError());
 	}
 
