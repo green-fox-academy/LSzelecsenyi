@@ -1,18 +1,30 @@
 package com.greenfox.todo.model;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Assignees")
 public class Assignee {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private String email;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Todo> todos;
+
+    public void addTodo(Todo todo) {
+        todos.add(todo);
+        todo.setAssignee(this);
+    }
+
+    public void removeTodo(Todo todo) {
+        todos.remove(todo);
+        todo.setAssignee(null);
+    }
 
     public Assignee() {
     }
@@ -24,6 +36,12 @@ public class Assignee {
 
     public long getId() {
         return id;
+    }
+
+    public List<Todo> getTodos() { return todos; }
+
+    public void setTodos(List<Todo> todos) {
+        this.todos = todos;
     }
 
     public void setId(long id) {

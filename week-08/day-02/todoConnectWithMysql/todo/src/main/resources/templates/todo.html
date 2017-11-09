@@ -14,9 +14,13 @@
     <form action="/todo/actives">
         <input type="submit" value="Show Active Todos" />
     </form>
-    <form th:action="@{/todo/bydate/}">
+    <form th:action="@{/todo/bydatecreated/}">
         <input type="date" name="date"/>
-        <button type="submit" value="Submit">Search By Date</button>
+        <button type="submit" value="Submit">Search By Created</button>
+    </form>
+    <form th:action="@{/todo/bydatedue/}">
+        <input type="date" name="date"/>
+        <button type="submit" value="Submit">Search By Due Date</button>
     </form>
     <form th:action="@{/todo/bytitle/}">
         <input type="text" name="title"/>
@@ -33,6 +37,8 @@
                 <th width="100px">Due</th>
                 <th width="50px">Delete</th>
                 <th width="50px">Edit</th>
+                <th width="130px">Assignee</th>
+                <th width="130px">Add Assignee</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +50,7 @@
                 <td th:text="${todo.getCreated()}"></td>
                 <td th:text="${todo.getDueDate()}"></td>
                 <td>
-                    <form th:action="@{'/todo/{id}/delete'(id=${todo.id})}" th:method="delete" >
+                    <form th:action="@{'/todo/list/{id}/delete'(id=${todo.id})}" th:method="delete" >
                         <button type="submit"> Delete </button>
                     </form>
                 </td>
@@ -53,13 +59,27 @@
                         <button type="submit"> Edit </button>
                     </form>
                 </td>
+                <td>
+                    <a th:text="${todo.assignee} == null ? 'Nobody assigned yet' : ${todo.assignee.getName()}"></a>
+                </td>
+                <td>
+                    <form th:each="assignee : ${assignees}">
+                        <select th:field="${assignee}"
+                                th:action="@{/todo/list/assignassignee/{todoId}/{assigneeId}(todoId=${todo.id}), (assigneeId=${assignee.id})}">
+                            <option value="0" th:text="'select assignee'" ></option>
+                            <option
+                                    th:value="${assignee.id}"
+                                    th:text="${assignee.name}"></option>
+                        </select>
+                    </form>
+                </td>
 
             </tr>
         </tbody>
     </table>
     <p></p>
     <form action="/todo/list/addnewtodo">
-        <input type="submit" value="Add New todo" />
+        <input type="submit" value="Add New Todo" />
     </form>
 </body>
 </html>

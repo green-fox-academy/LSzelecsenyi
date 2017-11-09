@@ -24,12 +24,13 @@ public class TodoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		todoRepository.save(new Todo("Start the day", true, false));
-		todoRepository.save(new Todo("Play cards with Bori", true, false));
-		todoRepository.save(new Todo("Laugh a lot together", false, true));
+		todoRepository.save(new Todo("Play cards", true, false));
+		todoRepository.save(new Todo("Laugh a lot", false, true));
 		todoRepository.save(new Todo("Ride bike", true, false));
 		todoRepository.save(new Todo("Drink beer", true, false));
 		todoRepository.save(new Todo("Code a bit", true, false));
 		assigneeRepository.save(new Assignee("Mikorka Kalman", "mikorkakalman@gmail.com"));
 		assigneeRepository.save(new Assignee("Metal Ica", "metallica@gmail.com"));
+		assigneeRepository.findOne(2L).addTodo(todoRepository.findOne(3L));
 	}
 }

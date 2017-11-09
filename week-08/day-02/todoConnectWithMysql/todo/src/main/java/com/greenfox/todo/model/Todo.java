@@ -1,10 +1,7 @@
 package com.greenfox.todo.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 public class Todo {
@@ -18,9 +15,11 @@ public class Todo {
     private LocalDate created;
     private LocalDate dueDate;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Assignee_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "assignee_id")
     private Assignee assignee;
+
+
 
     public Todo() {
     }
@@ -114,4 +113,6 @@ public class Todo {
     public void setAssignee(Assignee assignee) {
         this.assignee = assignee;
     }
+
+
 }

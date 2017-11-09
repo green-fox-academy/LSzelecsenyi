@@ -1,11 +1,13 @@
-package com.greenfox.todo.conroller;
+package com.greenfox.todo.Service;
 
 import com.greenfox.todo.model.Todo;
 import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -29,5 +31,6 @@ public class TodoService {
     public List<Todo> findByDueDate(LocalDate date) {
         return todoRepository.findAllByDueDate(date);
     }
+
 
 }

@@ -9,8 +9,10 @@
     <h3>ADD NEW TODO</h3>
     <form action="/todo/list/create" th:object="${newTodo}" method="post">
         <p><input type="hidden" th:field="*{id}"/></p>
-        <p><input type="text" th:field="*{title}" placeholder="Todo's title"/></p>
+        <p><input type="text" th:field="*{title}" name="title" placeholder="Todo's title"/></p>
+        <p><input type="date" name="dueDate" th:field="*{dueDate}"/></p>
         <p><input type="checkbox" th:field="*{isUrgent}"/>Check if todo is urgent</p>
+        <p><input type="hidden" th:field="*{created}" th:value="${created}"/></p>
         <p><button type="submit" value="Submit" th:text="'Add New Todo'"></button></p>
     </form>
     <form action="/todo/list">

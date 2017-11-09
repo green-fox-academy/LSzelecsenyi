@@ -1,16 +1,17 @@
 package com.greenfox.todo.conroller;
 
+import com.greenfox.todo.Service.TodoService;
+import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.model.Todo;
+import com.greenfox.todo.repository.AssigneeRepository;
 import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -20,15 +21,17 @@ public class TodoController {
     @Autowired
     private TodoRepository todoRepository;
 
-    @RequestMapping
-    public String todo(Model model) {
-        model.addAttribute("todos", todoRepository.findAll());
-        return "todo";
-    }
+    @Autowired
+    private AssigneeRepository assigneeRepository;
 
-    @RequestMapping({"/", "/list"})
+    @Autowired
+    private TodoService todoService;
+
+    
+    @RequestMapping({"", "/", "/list"})
     public String list(Model model) {
         model.addAttribute("todos", todoRepository.findAll());
+        model.addAttribute("assignees", assigneeRepository.findAll());
         return "todo";
     }
 
@@ -39,12 +42,12 @@ public class TodoController {
     }
 
     @PostMapping(value = "/list/create")
-    public String create(@ModelAttribute Todo todo) {
-        todoRepository.save(todo);
+    public String create(@RequestParam String title, @RequestParam String dueDate) {
+        todoRepository.save(new Todo(title, LocalDate.now(), LocalDate.parse(dueDate)));
         return "redirect:/todo/";
     }
 
-    @DeleteMapping("/{id}/delete")
+    @DeleteMapping("/list/{id}/delete")
     public ModelAndView delete(@PathVariable long id) {
         todoRepository.delete(id);
         return  new ModelAndView("redirect:/todo/list");
@@ -60,7 +63,7 @@ public class TodoController {
     @PostMapping("/list/{id}/edit")
     public String edit(@ModelAttribute Todo todo) {
         todoRepository.save(todo);
-        return "redirect:/todo";
+        return "redirect:/todo/";
     }
 
     @GetMapping("/actives")
@@ -70,18 +73,16 @@ public class TodoController {
         return "actives";
     }
 
-//    @GetMapping("/actives")
-//    public String listActiveOnSameSite(@RequestParam boolean isDone) {
-//        List actives = todoRepository.findAllByIsDone(false);
-//        model.addAttribute("actives", actives);
-//        return "todo";
-//    }
+    @GetMapping("/bydatecreated")
+    public String findByCreatedDate(Model model, @RequestParam String date) {
+        List listByDate = todoRepository.findAllByCreated(LocalDate.parse(date));
+        model.addAttribute("listByDate", listByDate);
+        return "bydate";
+    }
 
-    @GetMapping("/bydate")
-    public String findByDate(Model model, @RequestParam String date) {
-        final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        final LocalDate formattedDate = LocalDate.parse(date);
-        List listByDate = todoRepository.findAllByCreated(formattedDate);
+    @GetMapping("/bydatedue")
+    public String findByDueDate(Model model, @RequestParam String date) {
+        List listByDate = todoRepository.findAllByDueDate(LocalDate.parse(date));
         model.addAttribute("listByDate", listByDate);
         return "bydate";
     }
@@ -93,6 +94,18 @@ public class TodoController {
         return "bytitle";
     }
 
+
+    @PostMapping("/list/assignassignee/{todoId}/{assigneeId}")
+    public String assignAssignee(@RequestParam(value = "todoId") long todoId,
+                                 @RequestParam(value = "assigneeId") long assigneeId,
+                                 Model model) {
+        model.addAttribute("assignees", assigneeRepository.findAll());
+        Todo selectedTodo = todoRepository.findOne(todoId);
+        Assignee assignee = assigneeRepository.findOne(assigneeId);
+        selectedTodo.setAssignee(assignee);
+        todoRepository.save(selectedTodo);
+        return "redirect:/todo";
+    }
 
 }
 

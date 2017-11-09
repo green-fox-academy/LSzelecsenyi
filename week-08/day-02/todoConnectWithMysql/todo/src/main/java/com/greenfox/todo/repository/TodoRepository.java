@@ -1,5 +1,6 @@
 package com.greenfox.todo.repository;
 
+import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.model.Todo;
 import org.springframework.data.repository.CrudRepository;
 
@@ -12,5 +13,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
     List<Todo> findAllByTitle(String title);
     List<Todo> findAllByCreated(LocalDate date);
     List<Todo> findAllByDueDate(LocalDate date);
+    List<Todo> findByAssignee(Assignee assignee);
 
 }

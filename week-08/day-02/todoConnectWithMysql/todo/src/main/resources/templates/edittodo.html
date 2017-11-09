@@ -7,17 +7,16 @@
 </head>
 <body>
     <h3>EDIT TODO</h3>
-    <form action="/todo/list">
-        <input type="submit" value="Assignees" />
-    </form>
 <form th:action="@{'/todo/list/{id}/edit'(id=${todo.id})}" th:object="${todo}" method="post">
         <p><input type="hidden" th:field="*{id}"/></p>
         <p><input type="text" th:field="*{title}" id="title" name="title"/></p>
         <p><input type="checkbox" th:field="*{isUrgent}" id="isUrgent" name="isUrgent"/>Check if Todo is urgent</p>
         <p><input type="checkbox" th:field="*{isDone}" id="isDone" name="isDone"/>Check if Todo is already done</p>
+        <p><input type="hidden" th:field="*{created}" id="created" name="created"/></p>
+        <p><input type="hidden" th:field="*{dueDate}" id="dueDate" name="dueDate"/></p>
         <p><button type="submit" value="Submit">Update Todo</button></p>
     </form>
-    <form action="/todo/list">
+    <form action="/todo/assignees">
         <input type="submit" value="Back > Assignees" />
     </form>
     <form action="/todo/list">
