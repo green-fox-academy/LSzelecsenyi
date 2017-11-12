@@ -1,13 +1,17 @@
 package com.greenfox.foxclub.model;
 
-public class Trick {
+public class Food {
+
     private String name;
 
-    public Trick() {
+
+    public Food() {
+
     }
 
-    public Trick(String trickDescription) {
-        this.name = trickDescription;
+    public Food(String name) {
+
+        this.name = name;
     }
 
     public String getName() {
@@ -16,14 +20,6 @@ public class Trick {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setTrick(String trick) {
-        this.name = trick;
-    }
-
-    public String getTrick() {
-        return name;
     }
 
     @Override

@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-</head>
-<body>
-<a href="../static/information.html">Information</a>
-<p><img src="../static/foxylove.png" ></img></p>
-<p>This is Mr. Fox. Currently living on pizza and lemonade. He knows 2 tricks.</p>
-<h1>Known tricks</h1>
-<ul th:if>
-    <li>Write HTML</li>
-    <li>Code in Java</li>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>FOX CLUB</title>
+    </head>
+    <body>
+        <a href="/nutritionstore">GO TO > NUTRITION STORE</a><br/>
+        <a href="/trickcenter">GO TO > TRICKCENTER</a>
+        <p><img src="foxylove.png" /></p>
+        <p th:text="'This is ' + ${name} + '. Currently living on ' + ${food} + ' and ' + ${drink} + '. She knows ' + ${knownTricksSize} + ' tricks.' "></p>
 
-</ul>
-
-</body>
+        <h3 width="120px" th:text="${knownTricksSize} == 0 ? 'Haven\'t learned tricks yet' : 'Known Tricks:'"></h3>
+        <ul th:each="trick : ${knownTricks}">
+            <li th:text="${trick.getName()}"></li>
+        </ul>
+    </body>
 </html>

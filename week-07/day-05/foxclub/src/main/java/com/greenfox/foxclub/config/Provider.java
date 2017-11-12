@@ -1,0 +1,32 @@
+package com.greenfox.foxclub.config;
+
+import com.greenfox.foxclub.model.Drink;
+import com.greenfox.foxclub.model.Food;
+import com.greenfox.foxclub.model.Fox;
+import com.greenfox.foxclub.model.Trick;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class Provider {
+
+    @Bean
+    public Fox fox() { return new  Fox();}
+
+    @Bean
+    public Drink drink() {
+        return new Drink();
+    }
+
+    @Bean
+    public Food food() {
+        return new Food();
+    }
+
+    @Bean
+    public Trick trick() {
+        return new Trick();
+    }
+
+
+}
