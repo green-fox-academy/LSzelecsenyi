@@ -11,7 +11,7 @@ public class RestCont {
     @RequestMapping("/doubling")
     public Doub doubling(@RequestParam("input") Integer number) {
         Doub db = new Doub(number);
-            return db;
+        return db;
     }
 
     @RequestMapping("/greeter")
@@ -48,21 +48,23 @@ public class RestCont {
         return result;
     }
 
-//    @PostMapping("/arrays/{what}")
-//    public ResultNumber workWithTheArray(@PathVariable("what") String what, @RequestBody NumberArray numberArray) {
-//        ResultNumber resultNumber = new ResultNumber();
-//        if (what.equals("sum")) {
-//            for (int i = 0; i < NumberArray.getNumbers.length(); i++) {
-//                numberArray.getNumbers()[i]
-//            }
-//        }
-//        return resultNumber;
-//    }
+    @PostMapping("/arrays")
+    public ResultNumber manipulateTheArray(@RequestBody NumberArray numberArray) {
+        ResultNumber resultNumber = new ResultNumber();
+        int sum = 0;
+        if (numberArray.getWhat().equals("sum")) {
+            for (int i = 0; i < numberArray.getNumbers().size(); i++) {
+                sum += numberArray.getNumbers().get(i);
+                resultNumber.setResult(sum);
+            }
+        }
+        return resultNumber;
+    }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
-    public ErrorText paramError(MissingServletRequestParameterException missingParam) {
+    public ErrorText paramError (MissingServletRequestParameterException missingParam){
         ErrorText errorText = new ErrorText();
-        if (missingParam.getParameterName().equals("input")){
+        if (missingParam.getParameterName().equals("input")) {
             errorText.setError("Please provide an input!");
         } else if (missingParam.getParameterName().equals("title")) {
             errorText.setError("Please provide a title!");
@@ -73,11 +75,13 @@ public class RestCont {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ErrorText missingNumber() {
+    public ErrorText missingNumber () {
         ErrorText errorText = new ErrorText();
         errorText.setError("Please provide a number!");
         return errorText;
     }
 
 }
+
+
 

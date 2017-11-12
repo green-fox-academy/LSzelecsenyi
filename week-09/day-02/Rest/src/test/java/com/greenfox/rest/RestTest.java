@@ -65,6 +65,8 @@ public class RestTest {
                 .andExpect(jsonPath("error", is("Please provide an input!")));
     }
 
+//TESTS FOR GREET
+
     @Test
     public void testGreet() throws Exception {
         mockMvc.perform(get("/greeter?name=mikorkakalman&title=szerencsecsomag"))
@@ -88,6 +90,8 @@ public class RestTest {
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("error", is("Please provide a title!")));
     }
+
+//TESTS FOR DOUNTIL
 
     @Test
     public void testDoUntilFactor() throws Exception {

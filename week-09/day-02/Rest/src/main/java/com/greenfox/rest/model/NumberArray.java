@@ -1,9 +1,11 @@
 package com.greenfox.rest.model;
 
+import java.util.ArrayList;
+
 public class NumberArray {
 
-    private String what = "sum";
-    private int[] numbers = {1, 2, 5, 10};
+    private String what;
+    private ArrayList<Integer> numbers;
 
     public String getWhat() {
         return what;
@@ -13,11 +15,30 @@ public class NumberArray {
         this.what = what;
     }
 
-    public int[] getNumbers() {
+    public ArrayList<Integer> getNumbers() {
         return numbers;
     }
 
-    public void setNumbers(int[] numbers) {
+    public void setNumbers(ArrayList<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    public NumberArray(ArrayList<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
+    public NumberArray(String what) {
+
+        this.what = what;
+    }
+
+    public NumberArray() {
+
+    }
+
+    public NumberArray(String what, ArrayList<Integer> numbers) {
+
+        this.what = what;
         this.numbers = numbers;
     }
 }

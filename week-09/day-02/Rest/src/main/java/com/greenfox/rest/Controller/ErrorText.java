@@ -7,6 +7,10 @@ public class ErrorText {
     public ErrorText() {
     }
 
+    public ErrorText(String error) {
+        this.error = error;
+    }
+
     public String getError() {
         return error;
     }

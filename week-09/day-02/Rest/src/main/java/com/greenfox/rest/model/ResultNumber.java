@@ -4,7 +4,16 @@ public class ResultNumber {
 
     private int result;
 
+    public ResultNumber() {
+    }
+
+    public ResultNumber(int result) {
+
+        this.result = result;
+    }
+
     public int getResult() {
+
         return result;
     }
 
