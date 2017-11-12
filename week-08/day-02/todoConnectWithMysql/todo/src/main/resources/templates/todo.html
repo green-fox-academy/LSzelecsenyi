@@ -63,14 +63,8 @@
                     <a th:text="${todo.assignee} == null ? 'Nobody assigned yet' : ${todo.assignee.getName()}"></a>
                 </td>
                 <td>
-                    <form th:each="assignee : ${assignees}">
-                        <select th:field="${assignee}"
-                                th:action="@{/todo/list/assignassignee/{todoId}/{assigneeId}(todoId=${todo.id}), (assigneeId=${assignee.id})}">
-                            <option value="0" th:text="'select assignee'" ></option>
-                            <option
-                                    th:value="${assignee.id}"
-                                    th:text="${assignee.name}"></option>
-                        </select>
+                    <form >
+
                     </form>
                 </td>
 
