@@ -20,7 +20,6 @@ public class Todo {
     private Assignee assignee;
 
 
-
     public Todo() {
     }
 
