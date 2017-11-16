@@ -24,7 +24,7 @@ public class RedditController  {
 
     @GetMapping({"", "/"})
     public String listPosts(Model model) {
-        model.addAttribute("posts", redditRepo.findAll());
+        model.addAttribute("posts", redditRepo.findAllByOrderByScoreDesc());
         return "listposts";
     }
 
