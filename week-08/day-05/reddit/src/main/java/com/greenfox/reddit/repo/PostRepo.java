@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface RedditRepo extends CrudRepository<Post, Long> {
+public interface PostRepo extends CrudRepository<Post, Long> {
 
     List<Post> findAllByOrderByScoreDesc();
 }

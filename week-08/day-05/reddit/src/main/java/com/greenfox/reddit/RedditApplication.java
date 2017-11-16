@@ -1,13 +1,11 @@
 package com.greenfox.reddit;
 
 import com.greenfox.reddit.model.Post;
-import com.greenfox.reddit.repo.RedditRepo;
+import com.greenfox.reddit.repo.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.persistence.Entity;
 
 @SpringBootApplication
 public class RedditApplication implements CommandLineRunner{
@@ -17,7 +15,7 @@ public class RedditApplication implements CommandLineRunner{
 	}
 
     @Autowired
-    RedditRepo redditRepo;
+    PostRepo redditRepo;
 
 	@Override
 	public void run(String... args) throws Exception {

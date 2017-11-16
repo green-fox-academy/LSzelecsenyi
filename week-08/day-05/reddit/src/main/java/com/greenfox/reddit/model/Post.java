@@ -11,16 +11,16 @@ public class Post {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private String post;
+    private String content;
     private int score;
 
     public Post(String post, int score) {
-        this.post = post;
+        this.content = post;
         this.score = score;
     }
 
     public Post(String post) {
-        this.post = post;
+        this.content = post;
         score = 0;
     }
 
@@ -37,12 +37,12 @@ public class Post {
         this.id = id;
     }
 
-    public String getPost() {
-        return post;
+    public String getContent() {
+        return content;
     }
 
-    public void setPost(String post) {
-        this.post = post;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getScore() {

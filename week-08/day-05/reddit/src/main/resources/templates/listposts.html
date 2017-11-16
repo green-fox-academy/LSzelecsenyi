@@ -5,9 +5,10 @@
     <title>Posts</title>
 </head>
 <body>
-    <form action="/addnew">
-        <input type="submit" value="add new post"/>
-    </form>
+<form th:action="@{/reddit/addnew/}" th:object="${content}" method="post">
+    <input  type="text" name="content" placeholder="Add your post here"/>
+    <button type="submit">Add</button>
+</form>
     <h2>POSTS</h2>
 
     <table>
@@ -21,8 +22,10 @@
         <tbody>
             <tr th:each="post : ${posts}">
                 <td th:text="${post.getScore()}"></td>
-                <td><a th:href="'reddit/' + ${post.id} + '/upvote'">+</a><a th:href="'reddit/' + ${post.id} + '/downvote'">-</a></td>
-                <td th:text="${post.getPost()}"></td>
+                <td><a th:href="'reddit/' + ${post.id} + '/upvote'"><img th:src="@{/up.png}" height="13" width="15"/></a>
+                    <a th:href="'reddit/' + ${post.id} + '/downvote'"><img th:src="@{/down.png}" height="13" width="15"/></a>
+                </td>
+                <td th:text="${post.getContent()}"></td>
             </tr>
         </tbody>
     </table>
