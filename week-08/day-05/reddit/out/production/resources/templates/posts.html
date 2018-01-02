@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="webjars/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}" src="../static/js/main.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-success nBtn">New Post</button>
+        </div>
+        <div class="card-block">
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th class="th-id">Id</th>
+                    <th class="th-content">Content</th>
+                    <th class="th-vote"></th>
+                    <th class="th-vote"></th>
+                    <th class="th-score">Score</th>
+                    <th class="th-edit">Edit</th>
+                    <th class="th-del">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.id}"></td>
+                    <td th:text="${post.content}"></td>
+                    <td class="td-vote"><a th:href="'/' + ${post.id} + '/upvote'"><img th:src="@{/arrow-top.png}" /></a></td>
+                    <td class="td-vote"><a th:href="'/' + ${post.id} + '/downvote'"><img th:src="@{/arrow-down.png}" /></a></td>
+                    <td class="td-score" th:text="${post.score}"></td>
+                    <td class="th-edit"><a th:href="@{findOne/(id=${post.id})}" class="btn btn-primary eBtn">Edit</a></td>
+                    <td class="th-del"><a th:href="@{delete/(id=${post.id})}" class="btn btn-danger delBtn">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <hr/>
+            <ul class="nav nav-pills">
+                <li class="nav-item" th:each="i : ${#numbers.sequence(0, posts.totalPages-1)}">
+                    <a th:href="@{/(page=${i})}" th:text="${i}" class="nav-link"
+                       th:classappend="${currentPage} == ${i} ? 'active' : ''"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="myForm">
+        <form th:action="@{/save}" method="post">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update or create</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="id" class="form-control-label">ID:</label>
+                                <input type="text" class="form-control" id="id" name="id" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="content" class="form-control-label">Content:</label>
+                                <input type="text" class="form-control" id="content" name="content" value="" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Save"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="alert alert-danger">
+                        Are you sure?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="" class="btn btn-danger" id="delRef">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

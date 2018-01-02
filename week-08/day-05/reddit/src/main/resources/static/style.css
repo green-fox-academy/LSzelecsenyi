@@ -1,0 +1,72 @@
+body {
+    font-size: .75rem;
+    line-height: .6rem;
+    background-color:  #005580;
+}
+
+.btn {
+    padding: .2rem .4rem;
+    font-size: .5rem;
+}
+
+.nav-pills {
+    padding: .2rem .4rem;
+    font-size: .5rem;
+}
+
+.table td, .table th {
+    padding: .5rem;
+    font-size: .7rem;
+}
+
+th.th-id {
+    width: 5%;
+}
+
+th.th-content {
+    width: 72%;
+}
+
+th.th-del td.th-del{
+    width: 8%;
+}
+
+th.th-edit td.th-edit{
+    width: 8%;
+}
+
+th.th-score {
+    width: 10%;
+    text-align: center;
+}
+
+td.td-score {
+    text-align: center;
+}
+
+/*.upvote .downvote{*/
+    /*width: 12px;*/
+    /*height: 12px;*/
+/*}*/
+
+th.th-vote {
+    width: 5%;
+}
+
+img{
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.card {
+    width: 80%;
+    align: center;
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
