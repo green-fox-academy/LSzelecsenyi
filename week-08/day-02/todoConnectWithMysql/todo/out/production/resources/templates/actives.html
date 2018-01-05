@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8"/>
+    <title>Active Todos</title>
+</head>
+<body>
+<form action="/todo/list/">
+    <input type="submit" value="Back > Todo List" />
+</form>
+<table>
+    <thead>
+    <tr align="left">
+        <th width="40px">Id</th>
+        <th width="150px">Todo</th>
+        <th width="70px">Done</th>
+        <th width="70px">Urgent</th>
+        <th width="90px">Crated</th>
+        <th width="90px">Due</th>
+        <th width="50px">Delete</th>
+        <th width="50px">Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${actives}">
+        <td th:text="${todo.getId()}"></td>
+        <td th:text="${todo.getTitle()}"></td>
+        <td th:text="${todo.getIsDone()} ? 'done' : 'active'"></td>
+        <td th:text="${todo.getIsUrgent()} ? 'urgent' : 'not urgent'"></td>
+        <td th:text="${todo.getCreated()}"></td>
+        <td th:text="${todo.getDueDate()}"></td>
+        <td>
+            <form th:action="@{'/todo/{id}/delete'(id=${todo.id})}" th:method="delete" >
+                <button type="submit"> Delete </button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/todo/list/{id}/edit'(id=${todo.id})}">
+                <button type="submit"> Edit </button>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

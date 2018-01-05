@@ -1,7 +1,7 @@
 package com.greenfox.todo.conroller;
 
+import com.greenfox.todo.Service.AssigneeService;
 import com.greenfox.todo.Service.TodoService;
-import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.model.Todo;
 import com.greenfox.todo.repository.AssigneeRepository;
 import com.greenfox.todo.repository.TodoRepository;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,33 +24,42 @@ public class TodoController {
     private AssigneeRepository assigneeRepository;
 
     @Autowired
+    private AssigneeService assigneeService;
+
+    @Autowired
     private TodoService todoService;
 
-    
-    @RequestMapping({"", "/", "/list"})
+//list todos
+
+    @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("todos", todoRepository.findAll());
-        model.addAttribute("assignees", assigneeRepository.findAll());
+        model.addAttribute("todos", todoService.listTodos());
         return "todo";
     }
 
-    @GetMapping("/list/addnewtodo")
+//add new todo
+
+    @GetMapping("/addnewtodo")
     public String newTodo(Model model) {
         model.addAttribute("newTodo", new Todo());
-        return "addtodo";
+        return "newtodo";
     }
 
     @PostMapping(value = "/list/create")
     public String create(@RequestParam String title, @RequestParam String dueDate) {
-        todoRepository.save(new Todo(title, LocalDate.now(), LocalDate.parse(dueDate)));
-        return "redirect:/todo/";
+        todoService.createTodo(new Todo(title, LocalDate.now(), LocalDate.parse(dueDate)));
+        return "redirect:/todo";
     }
 
-    @DeleteMapping("/list/{id}/delete")
-    public ModelAndView delete(@PathVariable long id) {
-        todoRepository.delete(id);
-        return  new ModelAndView("redirect:/todo/list");
+//delete todo
+
+    @GetMapping("/list/{id}/delete")
+    public String delete(@PathVariable long id) {
+        todoService.deleteTodo(id);
+        return ("redirect:/todo");
     }
+
+//edit todo
 
     @GetMapping("/list/{id}/edit")
     public String edit(@PathVariable long id, Model model) {
@@ -64,48 +72,52 @@ public class TodoController {
     @PostMapping("/list/{id}/edit")
     public String edit(@ModelAttribute Todo todo) {
         todoRepository.save(todo);
-        return "redirect:/todo/";
+        return "redirect:/todo";
     }
+
+//SEARCHING FEATURES
 
     @GetMapping("/actives")
     public String listActive(Model model) {
-        List actives = todoRepository.findAllByIsDone(false);
-        model.addAttribute("actives", actives);
-        return "actives";
+        List actives = todoService.findActive(false);
+        model.addAttribute("todos", actives);
+        return "redirect:/todo";
+    }
+
+    @RequestMapping("/completed/{id}")
+    public String toggleCompleted(@PathVariable long id) {
+        Todo temp = todoRepository.findOne(id);
+        temp.setIsDone(!temp.getIsDone());
+        todoRepository.save(temp);
+        return "redirect:/todo";
     }
 
     @GetMapping("/bydatecreated")
     public String findByCreatedDate(Model model, @RequestParam String date) {
-        List listByDate = todoRepository.findAllByCreated(LocalDate.parse(date));
+        List listByDate = todoService.findByCreated(LocalDate.parse(date));
         model.addAttribute("listByDate", listByDate);
         return "bydate";
     }
 
     @GetMapping("/bydatedue")
     public String findByDueDate(Model model, @RequestParam String date) {
-        List listByDate = todoRepository.findAllByDueDate(LocalDate.parse(date));
+        List listByDate = todoService.findByDueDate(LocalDate.parse(date));
         model.addAttribute("listByDate", listByDate);
         return "bydate";
     }
 
     @GetMapping("/bytitle")
     public String findByTitle(Model model, String title) {
-        List byTitle = todoRepository.findAllByTitle(title);
+        List byTitle = todoService.findByTitle(title);
         model.addAttribute("byTitle", byTitle);
         return "bytitle";
     }
 
-
-    @PostMapping("/list/assignassignee/{todoId}/{assigneeId}")
-    public String assignAssignee(@RequestParam(value = "todoId") long todoId,
-                                 @RequestParam(value = "assigneeId") long assigneeId,
-                                 Model model) {
-        model.addAttribute("assignees", assigneeRepository.findAll());
-        Todo selectedTodo = todoRepository.findOne(todoId);
-        Assignee assignee = assigneeRepository.findOne(assigneeId);
-        selectedTodo.setAssignee(assignee);
-        todoRepository.save(selectedTodo);
-        return "redirect:/todo";
+    @GetMapping("/byassignee")
+    public String findByAssignee(Model model, String assignee) {
+        List byAssignee = todoService.findByAssignee(assignee);
+        model.addAttribute("byAssignee", byAssignee);
+        return "byassignee";
     }
 
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+<div>
+    <h3  th:each="assignee : ${byAssignee}" th:object="${assignee}" th:text="*{assignee.name} + '\'s Todo(s)'"></h3>
+</div>
+    <table>
+        <thead>
+            <tr align="left">
+                <th width="40px">Id</th>
+                <th width="150px">Todo</th>
+                <th width="70px">Done</th>
+                <th width="70px">Urgent</th>
+                <th width="90px">Crated</th>
+                <th width="90px">Due</th>
+                <th width="50px">Assignee</th>
+                <th width="50px">Delete</th>
+                <th width="50px">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="todo : ${byAssignee}" th:object="${todo}">
+                <td th:text="*{id}"></td>
+                <td th:text="*{title}"></td>
+                <td th:text="*{isDone} ? 'done' : 'active'"></td>
+                <td th:text="*{isUrgent} ? 'urgent' : 'not urgent'"></td>
+                <td th:text="*{created}"></td>
+                <td th:text="*{dueDate}"></td>
+                <td th:text="*{assignee.name}"></td>
+                <td>
+                    <form th:action="@{'/todo/{id}/delete'(id=${todo.id})}" th:method="delete" >
+                        <button type="submit"> Delete </button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{'/todo/list/{id}/edit'(id=${todo.id})}">
+                        <button type="submit"> Edit </button>
+                    </form>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <form action="/todo/list">
+        <input type="submit" value="Back > Todo List" />
+    </form>
+</body>
+</html>

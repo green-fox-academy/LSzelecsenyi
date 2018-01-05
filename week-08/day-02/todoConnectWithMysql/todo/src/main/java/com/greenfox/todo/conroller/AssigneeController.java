@@ -1,5 +1,6 @@
 package com.greenfox.todo.conroller;
 
+import com.greenfox.todo.Service.AssigneeService;
 import com.greenfox.todo.model.Assignee;
 import com.greenfox.todo.repository.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,18 @@ public class AssigneeController {
     @Autowired
     private AssigneeRepository assigneeRepository;
 
+    @Autowired
+    private AssigneeService assigneeService;
+
+//list assignees
 
     @RequestMapping({"", "/"})
     public String listAssignees(Model model) {
-        model.addAttribute("assignees", assigneeRepository.findAll());
+        model.addAttribute("assignees", assigneeService.listAssignees());
         return "assignees";
     }
+
+//add new assignee
 
     @GetMapping("/addnewassignee")
     public String newAssignee(Model model) {
@@ -33,11 +40,15 @@ public class AssigneeController {
         return "redirect:/assignees";
     }
 
+//delete assignee
+
     @DeleteMapping("/{id}/delete")
     public String deleteAssignee(@PathVariable long id) {
         assigneeRepository.delete(id);
         return"redirect:/assignees";
     }
+
+//edit assignee
 
     @GetMapping("/{id}/edit")
     public String editAssignee(@PathVariable long id, Model model) {

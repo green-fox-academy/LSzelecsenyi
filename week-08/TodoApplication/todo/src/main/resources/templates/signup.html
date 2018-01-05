@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+</head>
+<body>
+    <p>Estere pakold be a baszataskat!! hozd el asszony veretikuljet is!</p>
+    <form action="/users/sign-up" th:object="${newUser}" method="post">
+        <p><input type="hidden" th:field="*{id}"/></p>
+        <p><input type="text" th:field="*{username}" name="username" placeholder="username"/></p>
+        <p><input type="text" name="password" th:field="*{password}" placeholder="password"/></p>
+        <p><input type="text" name="password" th:field="*{password}" placeholder="password"/></p>
+        <p><button type="submit" value="Submit" th:text="'sign up'"></button></p>
+    </form>
+</body>
+</html>
