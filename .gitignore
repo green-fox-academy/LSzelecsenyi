@@ -1,17 +1,24 @@
-.class
-.idea/**/gradle.xml
-.idea/**/libraries
-.gradle
+.idea/
+/out/
+*.xml
+*.iml
+*.iws
+*.ipr
+*.json
+*.txt
+*.csv
+*.class
+*.gradle
 **/build/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
 gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
-.idea/
-out
-*.xml
-*.iml
-<<<<<<< HEAD
-.gf.json
-=======
-.gf.json
->>>>>>> 24b2d638a2df379b07a4ab01e808b84153fc2f83
+**/gradle/
+gradlew.bat
+gradlew

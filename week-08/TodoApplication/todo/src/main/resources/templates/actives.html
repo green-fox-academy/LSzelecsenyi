@@ -92,8 +92,8 @@
                                 </div>
                             </td>
                             <td th:text="${todo.getIsUrgent()} ? 'urgent' : 'take your time!'"></td>
-                            <td th:text="${todo.getCreated()}"></td>
-                            <td th:text="${todo.getDueDate()}"></td>
+                            <td th:text="${todo.createdXAgo()}"></td>
+                            <td th:text="${todo.dueInX()}"></td>
                             <td>
                                 <a th:href="@{'/todo/{id}/editonactives'(id=${todo.id})}">
                                     <span class="glyphicon glyphicon-edit"></span>

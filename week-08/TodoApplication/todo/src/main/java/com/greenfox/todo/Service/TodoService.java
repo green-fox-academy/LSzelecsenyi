@@ -5,7 +5,7 @@ import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -32,11 +32,11 @@ public class TodoService {
         return todoRepository.findAllByTitleIsContaining(title);
     }
 
-    public List<Todo> findByCreated(LocalDate date) {
+    public List<Todo> findByCreated(LocalDateTime date) {
         return todoRepository.findAllByCreated(date);
     }
 
-    public List<Todo> findByDueDate(LocalDate date) {
+    public List<Todo> findByDueDate(LocalDateTime date) {
         return todoRepository.findAllByDueDate(date);
     }
 

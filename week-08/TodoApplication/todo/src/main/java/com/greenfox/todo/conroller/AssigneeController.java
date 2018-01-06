@@ -20,7 +20,7 @@ public class AssigneeController {
 
 //list assignees
 
-    @RequestMapping({"", "/"})
+    @GetMapping({"", "/"})
     public String listAssignees(Model model) {
         model.addAttribute("assignees", assigneeService.listAssignees());
         return "assignees";
@@ -45,7 +45,7 @@ public class AssigneeController {
 //delete assignee
 
     @DeleteMapping("/{id}/delete")
-    public String deleteAssignee(@PathVariable long id) {
+    public String deleteAssignee(@PathVariable Long id) {
         assigneeRepository.delete(id);
         return"redirect:/assignees";
     }

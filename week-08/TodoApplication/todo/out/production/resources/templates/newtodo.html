@@ -27,13 +27,7 @@
                             </div>
                         <div>
                             <div class="float-left">
-                                <p>Due date</p>
-                                <div>
-                                    <input name="dueDate" onfocus="(this.type='date')"  class="js-form-control" placeholder="pick due date" th:field="*{dueDate}" />
-                                </div>
-                                <div>
-                                    <input type="checkbox" checked="checked" th:field="*{isUrgent}"/> Check if todo is urgent
-                            </div>
+                                    <input type="checkbox" th:field="*{isUrgent}" name="isUrgent"/> Check if todo is urgent
                             </div>
                             <div class="float-right">
                                 <button type="submit" value="submit" class="btn btn-default btn-sm">

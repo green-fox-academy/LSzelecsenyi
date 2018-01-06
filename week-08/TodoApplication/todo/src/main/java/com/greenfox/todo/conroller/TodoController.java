@@ -6,11 +6,14 @@ import com.greenfox.todo.model.Todo;
 import com.greenfox.todo.repository.AssigneeRepository;
 import com.greenfox.todo.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -34,6 +37,7 @@ public class TodoController {
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("todos", todoService.listTodos());
+        System.out.println(LocalDateTime.now());
         return "todo";
     }
 
@@ -46,8 +50,9 @@ public class TodoController {
     }
 
     @PostMapping("/create")
-    public String create(@RequestParam String title, @RequestParam String dueDate) {
-        todoService.createTodo(new Todo(title, LocalDate.now(), LocalDate.parse(dueDate)));
+    public String create(@RequestParam String title,
+                         @RequestParam(value = "isUrgent", defaultValue = "false") boolean isUrgent) {
+        todoService.createTodo(new Todo(title, LocalDateTime.now(), isUrgent));
         return "redirect:/todo";
     }
 
@@ -115,15 +120,15 @@ public class TodoController {
     }
 
     @GetMapping("/bydatecreated")
-    public String findByCreatedDate(Model model, @RequestParam String date) {
-        List listByDate = todoService.findByCreated(LocalDate.parse(date));
+    public String findByCreatedDate(Model model, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime date) {
+        List listByDate = todoService.findByCreated(date);
         model.addAttribute("listByDate", listByDate);
         return "bydate";
     }
 
     @GetMapping("/bydatedue")
-    public String findByDueDate(Model model, @RequestParam String date) {
-        List listByDate = todoService.findByDueDate(LocalDate.parse(date));
+    public String findByDueDate(Model model, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime date) {
+        List listByDate = todoService.findByDueDate(date);
         model.addAttribute("listByDate", listByDate);
         return "bydate";
     }

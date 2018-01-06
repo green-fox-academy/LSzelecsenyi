@@ -9,7 +9,7 @@ public class Assignee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
     private String name;
     private String email;
 
@@ -36,7 +36,7 @@ public class Assignee {
         this.email = email;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

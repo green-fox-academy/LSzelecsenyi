@@ -10,7 +10,7 @@
     <form action="assignees/addnewassignee">
         <input type="submit" value="Add Assignee" />
     </form>
-    <form action="/todo/list/">
+    <form action="/todo">
         <input type="submit" value="Back to Todo List" />
     </form>
     <table class="assignees">
@@ -25,9 +25,9 @@
         </thead>
         <tbody>
             <tr th:each="assignee : ${assignees}">
-                <td th:text="${assignee.getId()}"></td>
-                <td th:text="${assignee.getName()}"></td>
-                <td th:text="${assignee.getEmail()}"></td>
+                <td th:text="${assignee.id}"></td>
+                <td th:text="${assignee.name}"></td>
+                <td th:text="${assignee.email()}"></td>
                 <td><form th:action="@{'/assignees/{id}/delete'(id=${assignee.id})}" th:method="delete" >
                     <button type="submit"> Delete </button>
                 </form>
