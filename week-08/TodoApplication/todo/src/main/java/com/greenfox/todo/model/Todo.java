@@ -54,16 +54,6 @@ public class Todo {
         return minutes / 1440 + " days ago";
     }
 
-//    public String dateDue() {
-//        Duration toDue = Duration.between(LocalDateTime.now(), this.dueDate);
-//        if (toDue.toMillis() > 0) {
-//            return "Due in " + ((toDue.toHours() < 1) ? toDue + " minutes" : toDue.toHours() + " hours");
-//        }
-//        else {
-//            return "Overdue";
-//        }
-//    }
-
     public String dueInX() {
         Duration toDue = Duration.between(LocalDateTime.now(), this.dueDate);
         if (toDue.toMillis() <= 0) {
