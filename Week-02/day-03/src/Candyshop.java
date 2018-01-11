@@ -12,8 +12,8 @@ public class Candyshop{
         // Your task is to change from "2" to "Croissant" and change from "false" to "Ice cream"
         // No, don't just remove the lines
 
-          arrayList.set(arrayList.indexOf(false), "Croissant");
-          arrayList.set(arrayList.indexOf(2), "Ice cream");
+        arrayList.set(arrayList.indexOf(false), "Croissant");
+        arrayList.set(arrayList.indexOf(2), "Ice cream");
 
         System.out.println(arrayList);
     }

@@ -9,12 +9,13 @@ public class UrlFixer {
 
         String urlCopy = url;
 
-        url = url.substring(0, 4) + ":" + url.substring(url.indexOf("//"),url.indexOf("bots")) + "odds";
+        url = url.substring(0, 5) + ":" + url.substring(url.indexOf("//"),url.indexOf("bots")) + "odds";
         System.out.println(url);
 
         urlCopy = urlCopy.replace("https", "https:");
         urlCopy = urlCopy.replace("bots", "odds");
         System.out.println(urlCopy);
+        System.out.println(url);
 
 
     }

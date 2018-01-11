@@ -1,16 +1,20 @@
-public class Reverse
-{
-    public static void main(String[] args) {
+import java.util.Arrays;
 
-        int[] aj = {3, 4, 5, 6, 7};
-        for (int i = 0; i < aj.length/2; i++) {
-            int temp = aj[i];
-            aj[i] = aj[aj.length  - (1 + i)];
-            aj[aj.length - (1 + i)] = temp;
+public class Reverse {
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{3, 4, 5, 6, 7, 8, 9};
+        System.out.println(reverse(arr));
+    }
+
+    public static String reverse(int[] arr) {
+        int temp;
+        for (int i = 0; i < arr.length/2; i++) {
+            temp = arr[arr.length - 1 - i];
+            arr[arr.length - 1 - i] = arr[i];
+            arr[i] = temp;
         }
-        for (int i = 0; i < aj.length; i++) {
-        System.out.print(aj[i]);
-        }
+        return Arrays.toString(arr);
     }
 }
 

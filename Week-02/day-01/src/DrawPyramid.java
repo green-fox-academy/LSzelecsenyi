@@ -19,21 +19,16 @@ public class DrawPyramid {
         System.out.println("give me a whole number!");
         int number = sc.nextInt();
 
-        String pyramid = "";
-
-
-        for(int i = 1, k = 0; i <= number; ++i, k = 0) {
-            for (int empty = 1; empty <= number - i; ++empty) {
-                System.out.print(" ");
-            }
-
-            while (k != 2 * i - 1) {
-                System.out.print("*");
-                ++k;
-            }
-
-            System.out.println();
-
+        StringBuilder space = new StringBuilder("");
+        StringBuilder asterisk = new StringBuilder("*");
+        for (int i = 0; i < number; i++) {
+            space.append(" ");
+        }
+        for (int i = 0; i < number; i++) {
+            System.out.print(space);
+            System.out.println(asterisk);
+            space.deleteCharAt(0);
+            asterisk.append("**");
         }
     }
 }

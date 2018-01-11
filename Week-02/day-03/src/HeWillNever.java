@@ -25,7 +25,5 @@ public class HeWillNever {
             out += " " + map.get(notSoCrypticMessage[i]);
         }
         System.out.println(out);
-
     }
-
 }

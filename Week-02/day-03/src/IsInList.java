@@ -9,15 +9,13 @@ public class IsInList{
         // Can you do both the different approaches you tried in the previous one?
 
         ArrayList<Integer> listToCheckWith = new ArrayList<Integer>(Arrays.asList(4, 8, 12, 16));
-
         System.out.println(check(list, listToCheckWith));
-
     }
 
     public static boolean check(ArrayList<Integer> listToCheck, ArrayList<Integer> listToCheckWith) {
         if (listToCheck.containsAll(listToCheckWith)) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
-
 }

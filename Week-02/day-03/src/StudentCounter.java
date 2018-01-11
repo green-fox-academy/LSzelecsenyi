@@ -1,6 +1,9 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class StudentCounter{
+public class StudentCounter {
+
     public static void main(String... args){
         ArrayList<Map<String, Object>> map = new ArrayList<Map<String, Object>>();
 
@@ -46,25 +49,28 @@ public class StudentCounter{
         //  - Who has got more candies than 4 candies
         //  - Sum the age of people who have lass than 5 candies
 
-        ArrayList<String> sweetLovers = new ArrayList<>();
+        sweetLovers(map);
+        sumAge(map);
 
+    }
+
+    public static void sweetLovers(ArrayList<Map<String, Object>> map) {
+        ArrayList<String> sweetLovers = new ArrayList<>();
         for (int i = 0; i < map.size(); i++) {
             if ((int) map.get(i).get("candies") > 4) {
                 sweetLovers.add((String) map.get(i).get("name"));
             }
         }
+        System.out.println("People who have more than 4 candies are: " + sweetLovers);
+    }
 
+    public static void sumAge(ArrayList<Map<String, Object>> map) {
         Double sumAge = 0.0;
         for (int i = 0; i < map.size(); i++) {
-            if ((int) (map.get(i).get("candies")) < 5) {
+            if ((int) map.get(i).get("candies") < 5) {
                 sumAge += Double.valueOf(String.valueOf(map.get(i).get("age")));
             }
         }
-
-        System.out.println("People who have more than 4 candies are: " + sweetLovers);
         System.out.println("People's sum age who has less than 5 candies: " + sumAge);
-
-
     }
-
 }

@@ -5,8 +5,9 @@ public class Unique {
     public static void main(String[] args) {
 
         makeItUnique();
-
     }
+
+
 
     static void makeItUnique() {
         ArrayList inputNumbers = new ArrayList();
@@ -15,16 +16,22 @@ public class Unique {
         String input = "";
         int n = 0;
         System.out.println("Please enter numbers followed by pushing the enter key \nIf you want to start sort " +
-                            "your numbers just type \"start\"!");
+                "your numbers just type \"start\"!");
+
         do {
-            input = sc.next();
-            if (!input.equals("start")) {
-                n = Integer.parseInt(input);
-                inputNumbers.add(n);
+            try {
+                input = sc.next();
+                if (!input.equals("start")) {
+                    n = Integer.parseInt(input);
+                    inputNumbers.add(n);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Please type only numbers!");
             }
         } while (!input.equals("start"));
 
-        for (int i = 0; i < inputNumbers.size() ; i++) {
+
+        for (int i = 0; i < inputNumbers.size(); i++) {
             if (!sorted.contains(inputNumbers.get(i))) {
                 sorted.add(inputNumbers.get(i));
             }
@@ -33,8 +40,5 @@ public class Unique {
         for (Object numbers : sorted) {
             System.out.print(numbers + " ");
         }
-
-
     }
-
 }

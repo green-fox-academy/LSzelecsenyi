@@ -44,7 +44,7 @@ public class GMN {
                 lives--;
                 System.out.println("Too low. You have " + lives + " lives left.");
                 if(lives == 0) {
-                    System.out.println("GAME OVER YOU ARE A DEAD LOSER!");
+                    System.out.println("GAME OVER! YOU ARE A DEAD LOSER!");
                     break;
                 }
             } if (guess == random) {

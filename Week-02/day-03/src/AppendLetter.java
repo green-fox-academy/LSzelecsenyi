@@ -8,7 +8,6 @@ public class AppendLetter{
         for (int i = 0; i < far.size(); i++) {
             far.set(i, far.get(i) + "a");
         }
-
         System.out.println(far);
     }
 }
