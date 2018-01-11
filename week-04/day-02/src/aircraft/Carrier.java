@@ -34,7 +34,4 @@ public class Carrier {
             this.ammoStore = squad.get(i).refill(ammoStore);
         } return ammoStore;
     }
-
-
-
 }

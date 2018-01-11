@@ -21,9 +21,5 @@ public class Main {
         F35 f35 = new F35();
         System.out.println(f35.refill(30));
         System.out.println(f35.currentAmmo);
-
-
-
-
     }
 }

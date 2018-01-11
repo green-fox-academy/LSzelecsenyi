@@ -9,5 +9,4 @@ public class Trees2 extends Plants2 {
     public String getColor() {
         return color;
     }
-
 }

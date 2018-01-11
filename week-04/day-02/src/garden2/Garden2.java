@@ -55,37 +55,5 @@ public class Garden2 {
         System.out.println();
         garden.checkWateringNeed(garden.plants);
         garden.watering(garden.plants,70);
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//    public void checkWaterAmounts(ArrayList<garden2.Plants2> plants) {
-//        for (int i = 0; i < plants.size(); i++) {
-//            System.out.println(plants.get(i).getColor() + plants.get(i).getType() +  "\'s waterAmount is: " + plants.get(i).waterAmount);
-//        }
-//    }
-
-
-
-
-
-
-
