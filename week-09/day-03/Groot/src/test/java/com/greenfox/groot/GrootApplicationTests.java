@@ -89,5 +89,4 @@ public class GrootApplicationTests {
 		mockMvc.perform(get("/yondu/blabla"))
 				.andExpect(status().is4xxClientError());
 	}
-
 }

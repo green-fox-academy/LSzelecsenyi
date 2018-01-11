@@ -1,12 +1,14 @@
+package aircraft;
+
 public class Main {
 
     public static void main(String[] args) {
 
         Carrier carrier = new Carrier(400, 40);
-        carrier.addAircraft("F35");
-        carrier.addAircraft("F16");
-        carrier.addAircraft("F35");
-        carrier.addAircraft("F16");
+        carrier.addAircraft("aircraft.F35");
+        carrier.addAircraft("aircraft.F16");
+        carrier.addAircraft("aircraft.F35");
+        carrier.addAircraft("aircraft.F16");
 
         carrier.fillSquad(carrier.squad);
 

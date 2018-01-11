@@ -1,3 +1,5 @@
+package greenfox;
+
 public class Person
 {
     private String name;

@@ -1,3 +1,5 @@
+package garden2;
+
 public class Plants2 {
     String color;
     String type;

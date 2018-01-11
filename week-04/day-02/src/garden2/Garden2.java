@@ -1,3 +1,5 @@
+package garden2;
+
 import java.util.ArrayList;
 
 public class Garden2 {
@@ -75,7 +77,7 @@ public class Garden2 {
 
 
 //
-//    public void checkWaterAmounts(ArrayList<Plants2> plants) {
+//    public void checkWaterAmounts(ArrayList<garden2.Plants2> plants) {
 //        for (int i = 0; i < plants.size(); i++) {
 //            System.out.println(plants.get(i).getColor() + plants.get(i).getType() +  "\'s waterAmount is: " + plants.get(i).waterAmount);
 //        }

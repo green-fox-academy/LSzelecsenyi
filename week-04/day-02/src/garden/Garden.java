@@ -1,3 +1,5 @@
+package garden;
+
 import java.util.ArrayList;
 
 public class Garden extends ArrayList<Plants> {
@@ -23,7 +25,6 @@ public class Garden extends ArrayList<Plants> {
         System.out.println();
     }
 
-
     public void water(ArrayList<Plants> plants, int litres) {
         System.out.println("Watering with " + litres + " litres");
         int needsWatering = 0;
@@ -45,28 +46,3 @@ public class Garden extends ArrayList<Plants> {
         }
     }
 }
-
-
-
-
-
-//    public void checkWaterAmounts(Garden garden) {
-//        for (int i = 0; i < garden.plants.size(); i++) {
-//            if (plants.get(i) instanceof Flowers) {
-//            System.out.println(garden.plants.get(i).color + " flower's wateramount is: " + garden.plants.get(i).waterAmount);
-//            }
-//            if (plants.get(i) instanceof Trees) {
-//                System.out.println(garden.plants.get(i).color + " trees's wateramount is: " + garden.plants.get(i).waterAmount);
-//            }
-//        }
-//        System.out.println();
-//    }
-
-
-
-
-
-
-
-
-

@@ -1,3 +1,4 @@
+package garden;
 
 public class Plants {
 

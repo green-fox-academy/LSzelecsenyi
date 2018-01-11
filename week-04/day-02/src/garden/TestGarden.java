@@ -1,3 +1,5 @@
+package garden;
+
 public class TestGarden {
 
     public static void main(String[] args) {
@@ -18,6 +20,5 @@ public class TestGarden {
         garden.water(garden.plants, 70);
 
         garden.checkWatering(garden.plants);
-
     }
 }

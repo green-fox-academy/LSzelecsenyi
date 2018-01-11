@@ -1,6 +1,6 @@
+package aircraft;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class Carrier {
     int hp;
@@ -14,15 +14,15 @@ public class Carrier {
     }
 
     public void addAircraft(String aircraftToAdd) {
-        if (aircraftToAdd.equals("F16")) {
+        if (aircraftToAdd.equals("aircraft.F16")) {
             squad.add(new F16());
-        } else if (aircraftToAdd.equals("F35")) {
+        } else if (aircraftToAdd.equals("aircraft.F35")) {
             squad.add(new F35());
         }
     }
 
 //    It should fill all the aircraft with ammo and substract the needed ammo from the ammo storage
-//    If there is not enough ammo than it should start to fill the F35 types first
+//    If there is not enough ammo than it should start to fill the aircraft.F35 types first
 //    If there is no ammo when this method is called it should throw an exception
 
 //doesn't work yet

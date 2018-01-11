@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package aircraft;
 
 public class Aircraft {
     String type;

@@ -1,3 +1,5 @@
+package greenfox;
+
 import java.util.ArrayList;
 
 public class PallidaClass {
