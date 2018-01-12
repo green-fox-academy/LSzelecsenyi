@@ -1,7 +1,6 @@
 package Cloneable;
 
-public class Person
-{
+public class Person {
     private String name;
     private int age;
     private String gender;
@@ -31,5 +30,4 @@ public class Person
     public String getName() {
         return name;
     }
-
 }

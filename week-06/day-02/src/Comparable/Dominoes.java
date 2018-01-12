@@ -21,8 +21,6 @@ public class Dominoes {
                 }
             }
         }
-
-
         System.out.println(dominoes);
     }
 
@@ -36,5 +34,4 @@ public class Dominoes {
         dominoes.add(new Domino(7, 1));
         return dominoes;
         }
-
 }

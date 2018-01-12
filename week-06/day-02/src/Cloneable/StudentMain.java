@@ -6,8 +6,6 @@ public class StudentMain {
 
         Student john = new Student("John Doe", 20, "male", "BME");
         Student johnTheClone = (Student) john.clone();
-
         System.out.println(johnTheClone.previousOrganization);
-
     }
 }

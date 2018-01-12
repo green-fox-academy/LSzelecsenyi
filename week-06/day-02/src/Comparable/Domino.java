@@ -1,7 +1,5 @@
 package Comparable;
 
-import java.util.Arrays;
-
 public class Domino implements Comparable<Domino>, Printable{
     private final int[] values;
 

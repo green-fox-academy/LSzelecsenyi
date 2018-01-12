@@ -13,7 +13,6 @@ public class Reservations implements ResInterface{
         }
     }
 
-
     @Override
     public String getDowBooking() {
         ArrayList<String> dow = new ArrayList<>(Arrays.asList("MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"));
