@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MessageServiceApplication implements CommandLineRunner {
 
     @Autowired
-    MessageProceeder messageProceeder;
+    MessageProcessor messageProcessor;
 
     public static void main(String[] args) {
         SpringApplication.run(MessageServiceApplication.class, args);
@@ -17,6 +17,6 @@ public class MessageServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        messageProceeder.processMessage("Hi Barba, How are you?", "office@greenfox.com");
+        messageProcessor.processMessage("Hi Barba, How are you?", "office@greenfox.com");
     }
 }
