@@ -1,27 +1,19 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-    public class Notes {
 
-public static void main(String[]args){
+public class Notes {
 
-        Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+
         File file = new File("day-02.iml");
-
-        System.out.println(file.canRead()+", "+file.canWrite());
-
-
-
+        System.out.println(file.canRead() + ", " + file.canWrite());
         try {
-            Scanner anotherScanner = new Scanner(file);
-            while (anotherScanner.hasNext()) {
-                System.out.println(anotherScanner.nextLine());
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                System.out.println(scanner.nextLine());
             }
-
         } catch (IOException ex) {
-
         }
-
     }
-
 }

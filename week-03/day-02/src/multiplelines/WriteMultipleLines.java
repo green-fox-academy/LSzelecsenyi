@@ -1,4 +1,4 @@
-// Create a function that takes 3 parameters: a path, a word and a number,
+package multiplelines;// Create a function that takes 3 parameters: a path, a word and a number,
 // than it should write to a file.
 // The path parameter should be a string, that describes the location of the file.
 // The word parameter should be a string, that will be written to the file as lines
@@ -19,28 +19,24 @@ public class WriteMultipleLines {
 
     public static void main(String[] args) {
 
-    writeMultipleLines();
-
+        writeMultipleLines();
     }
 
     public static void writeMultipleLines() {
+        List<String> content = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Please give the file name you want to create!");
         String location = sc.nextLine();
         System.out.println("Please give the content of the file you want to multiplicate!");
-        String word = sc.nextLine();
-        List<String> content = new ArrayList<>();
-        content.add(word);
+        content.add(sc.nextLine());
         System.out.println("Please give the number of lines you want to have in the file!");
         int lines = sc.nextInt();
         try {
-        Path myPath = Paths.get(location);
-            for (int i = 0; i < lines ; i++) {
-        Files.write(myPath, content, StandardOpenOption.APPEND);
+            Path myPath = Paths.get(location);
+            for (int i = 0; i < lines; i++) {
+                Files.write(myPath, content, StandardOpenOption.APPEND);
             }
         } catch (Exception e) {
-
         }
     }
-
 }

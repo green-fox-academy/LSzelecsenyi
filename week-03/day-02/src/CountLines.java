@@ -13,7 +13,6 @@ public class CountLines {
     public static void main(String[] args) {
 
         System.out.println(countLines());
-
     }
 
     public static int countLines() {
@@ -29,8 +28,6 @@ public class CountLines {
         } catch (Exception e) {
             return 0;
         }
-
     }
-
 }
 

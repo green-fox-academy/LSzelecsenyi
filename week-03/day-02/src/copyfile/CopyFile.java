@@ -1,4 +1,4 @@
-// Write a function that copies a file to an other
+package copyfile;// Write a function that copies a file to an other
 // It should take the filenames as parameters
 // It should return a boolean that shows if the copy was successful
 
@@ -11,8 +11,7 @@ public class CopyFile {
 
     public static void main(String[] args) {
 
-        System.out.println(copyFiles("fileToCopy.txt", "fileToCopyTo.txt"));
-
+        System.out.println(copyFiles("src/copyfile/fileToCopy.txt", "src/copyfile/fileToCopyTo.txt"));
     }
 
     public static boolean copyFiles(String source, String destination) {
@@ -24,9 +23,9 @@ public class CopyFile {
             } catch (Exception e) {
 
             }
-            } catch (Exception e) {
+        } catch (Exception e) {
             return false;
-        } return true;
+        }
+        return true;
     }
-
 }
