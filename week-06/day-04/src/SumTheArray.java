@@ -10,7 +10,6 @@ public class SumTheArray {
         sumArray(arrayToSum1, 4);
         sumArray(arrayToSum2, 9);
         sumArray(arrayToSum3, 10);
-
     }
 
     public static <T extends Number> void sumArray(T[] array, Integer length) {
@@ -31,5 +30,4 @@ public class SumTheArray {
             System.out.println("The array's elements are: " + Arrays.toString(array) + "\n");
         }
     }
-
 }

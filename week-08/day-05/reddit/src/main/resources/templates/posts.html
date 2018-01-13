@@ -6,8 +6,8 @@
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" th:src="@{/js/main.js}" src="../static/js/main.js"></script>
-    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
 <div class="container">
@@ -32,11 +32,15 @@
                 <tr th:each="post : ${posts}">
                     <td th:text="${post.id}"></td>
                     <td th:text="${post.content}"></td>
-                    <td class="td-vote"><a th:href="'/' + ${post.id} + '/upvote'"><img th:src="@{/arrow-top.png}" /></a></td>
-                    <td class="td-vote"><a th:href="'/' + ${post.id} + '/downvote'"><img th:src="@{/arrow-down.png}" /></a></td>
+                    <td class="td-vote"><a th:href="'/' + ${post.id} + '/upvote'"><img th:src="@{/arrow-top.png}"/></a>
+                    </td>
+                    <td class="td-vote"><a th:href="'/' + ${post.id} + '/downvote'"><img
+                            th:src="@{/arrow-down.png}"/></a></td>
                     <td class="td-score" th:text="${post.score}"></td>
-                    <td class="th-edit"><a th:href="@{findOne/(id=${post.id})}" class="btn btn-primary eBtn">Edit</a></td>
-                    <td class="th-del"><a th:href="@{delete/(id=${post.id})}" class="btn btn-danger delBtn">Delete</a></td>
+                    <td class="th-edit"><a th:href="@{findOne/(id=${post.id})}" class="btn btn-primary eBtn">Edit</a>
+                    </td>
+                    <td class="th-del"><a th:href="@{delete/(id=${post.id})}" class="btn btn-danger delBtn">Delete</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -52,7 +56,8 @@
 
     <div class="myForm">
         <form th:action="@{/save}" method="post">
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -64,11 +69,11 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="id" class="form-control-label">ID:</label>
-                                <input type="text" class="form-control" id="id" name="id" value="" />
+                                <input type="text" class="form-control" id="id" name="id" value=""/>
                             </div>
                             <div class="form-group">
                                 <label for="content" class="form-control-label">Content:</label>
-                                <input type="text" class="form-control" id="content" name="content" value="" />
+                                <input type="text" class="form-control" id="content" name="content" value=""/>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -82,7 +87,8 @@
 
     </div>
 
-    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

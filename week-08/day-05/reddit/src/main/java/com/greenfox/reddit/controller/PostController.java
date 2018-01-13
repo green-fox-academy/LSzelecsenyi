@@ -58,5 +58,4 @@ public class PostController {
         postService.downVote(post);
         return "redirect:/";
     }
-
 }

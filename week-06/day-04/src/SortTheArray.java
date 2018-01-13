@@ -10,10 +10,9 @@ public class SortTheArray {
         sortArray(arrayToSort);
         System.out.println();
         sortArray2(arrayToSort);
-
     }
 
-    public static  <T extends Number> void sortArray(T[] array) {
+    public static <T extends Number> void sortArray(T[] array) {
         T temp;
         try {
             for (int i = 0; i < array.length; i++) {
@@ -32,7 +31,7 @@ public class SortTheArray {
         }
     }
 
-    public static <T extends  Number> void sortArray2(T[] array) {
+    public static <T extends Number> void sortArray2(T[] array) {
         try {
             Arrays.sort(array, Collections.reverseOrder());
         } catch (Exception e) {
@@ -41,5 +40,4 @@ public class SortTheArray {
             System.out.println(Arrays.toString(array));
         }
     }
-
 }

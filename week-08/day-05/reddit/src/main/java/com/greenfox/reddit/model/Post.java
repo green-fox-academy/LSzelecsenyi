@@ -25,11 +25,9 @@ public class Post {
     }
 
     public Post() {
-
     }
 
     public Integer getId() {
-
         return id;
     }
 

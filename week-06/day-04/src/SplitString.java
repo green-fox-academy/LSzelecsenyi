@@ -7,7 +7,6 @@ public class SplitString {
 
         SplitString split = new SplitString();
         split.splitString("CutHere", 3);
-
     }
 
     public String[] splitString(String str, int index) {
@@ -21,5 +20,4 @@ public class SplitString {
         System.out.println(Arrays.toString(strArray));
         return strArray;
     }
-
 }
