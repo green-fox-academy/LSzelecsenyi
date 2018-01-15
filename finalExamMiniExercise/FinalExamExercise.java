@@ -6,6 +6,8 @@
 //        0 0 0 1 0
 //        0 0 0 0 1
 
+import java.util.Arrays;
+
 public class FinalExamExercise {
 
     public static void main(String[] args) {
@@ -17,15 +19,18 @@ public class FinalExamExercise {
         int[][] matrix = new int[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
+                if (j == i) {
+                    matrix[i][j] = 1;
+                } else
                 matrix[i][j] = 0;
             }
         }
-// or       for (int[] row : matrix)
+//        for (int[] row : matrix)                  //other solution
 //            Arrays.fill(row, 0);
-        for (int i = 0; i < size; i++) {
-            matrix[i][i] = 1;
-        }
 //        for (int i = 0; i < size; i++) {
+//            matrix[i][i] = 1;
+//        }
+//        for (int i = 0; i < size; i++) {          //for printing
 //            System.out.println("\r");
 //            for (int j = 0; j < size; j++) {
 //                System.out.print(matrix[i][j]);
