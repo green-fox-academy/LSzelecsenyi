@@ -1,7 +1,3 @@
-[hello-world](https://github.com/LSzelecsenyi/hello-world)  
+[todo app](https://github.com/greenfox-academy/LSzelecsenyi/tree/master/week-08/TodoApplication/todo/src/main)  
 
-[patchwork](https://github.com/LSzelecsenyi/patchwork)  
-
-[git-lesson-repository](https://github.com/LSzelecsenyi/git-lesson-repository)  
-
-[1st day's Webpage](https://lszelecsenyi.github.io/#Techwiki)
+[reddit clone](https://github.com/greenfox-academy/LSzelecsenyi/tree/master/week-08/day-05/reddit/src/main)
